@@ -1,0 +1,14 @@
+/* Forcer l'affichage des lignes horizontales dans Full Calendar */
+.fc .fc-timegrid-slot {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.25) !important;
+}
+
+/* Renforcer légèrement la ligne des heures pleines */
+.fc .fc-timegrid-slot-label {
+    border-bottom: 1px solid rgba(150, 150, 150, 0.5) !important;
+}
+
+/* Masquer la ligne des demi-heures */
+.fc .fc-timegrid-slot-minor {
+    border-bottom: none !important;
+}
