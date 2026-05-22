@@ -1,5 +1,5 @@
 # Fdb version 4
-["bibtex doc"] 0 "doc.aux" "doc.bbl" "doc" 1779225230.14949 0
+["bibtex doc"] 0 "doc.aux" "doc.bbl" "doc" 1779440773.87407 0
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
   "doc.aux" 0 -1 0 "pdflatex"
   "references.bib" 0 -1 0 ""
@@ -7,8 +7,8 @@
   "doc.bbl"
   "doc.blg"
   (rewritten before read)
-["pdflatex"] 1779225229.53168 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779225230.14959 0
-  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779225228.79698 29652 0792d1fb47cc26b063d525124dbe7c80 ""
+["pdflatex"] 1779440773.20888 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779440773.87419 0
+  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779440772.27621 35665 6ed599085d7c78655ca9198ed8a74330 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -53,6 +53,7 @@
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
+  "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb" 1248133631 32734 69e00a6b65cedb993666e42eedb3d48f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
@@ -150,11 +151,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1776934883 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1776934857 3636773 ca6384a8b33025b44d8424c1f3898ae2 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "doc.aux" 1779225229.94334 9091 e08065647b126887e2936e576eb80d9b "pdflatex"
+  "doc.aux" 1779440773.64558 10508 782a90d72f686eee018c925ac32efbf4 "pdflatex"
   "doc.bbl" 0 -1 0 "bibtex doc"
-  "doc.out" 1779225229.94431 6887 746e8055d5456dce05a5393f12456469 "pdflatex"
-  "doc.tex" 1779225228.79698 29652 0792d1fb47cc26b063d525124dbe7c80 ""
-  "doc.toc" 1779225229.9445 3701 d0e825815f16a3cf743eeaf356f0308f "pdflatex"
+  "doc.out" 1779440773.64699 7218 ee246d882de010fdd7efb23796cbda10 "pdflatex"
+  "doc.tex" 1779440772.27621 35665 6ed599085d7c78655ca9198ed8a74330 ""
+  "doc.toc" 1779440773.64739 4375 9cffffa22521f6d504d913611596d85d "pdflatex"
   "figures/simulation_parametres.pdf" 1779224626.01593 35533 c1fccff3e95b81872c3afd8e1701bf21 ""
   (generated)
   "doc.aux"

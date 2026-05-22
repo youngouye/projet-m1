@@ -419,6 +419,8 @@ et on observe $(Y_i)_j = \theta(x_j - Z_i) + (E_i)_j$.
 \end{figure}
 
 
+
+
 % ════════════════════════════════════════════════════════════════════════════
 \newpage
 \section{Cas de référence : le modèle sans variables cachées}
@@ -427,13 +429,80 @@ et on observe $(Y_i)_j = \theta(x_j - Z_i) + (E_i)_j$.
 % pour tous les z. Tout est explicite ici — cela sert de référence et de motivation
 % pour mesurer la difficulté introduite par les variables cachées dans les sections suivantes.
 
+
+
+
+
 \subsection{Modèle simplifié et estimateur du maximum de vraisemblance}
 \label{subsec:modele_simplifie}
-% - Hypothèse : A_z = A pour tout z, avec A^T A inversible
-% - Le modèle devient : Y_i = A theta + sigma E_i
-% - Densité de Y_i : gaussienne N(A theta, sigma^2 Id_p)
-% - Log-vraisemblance : explicite, quadratique en theta
-% - Estimateur MV : theta_hat_n = (A^T A)^{-1} A^T * (1/n) sum Y_i
+
+On se place dans le cas simplifié où les transformations ne dépendent pas des
+variables cachées $Z_i$ : on suppose $A_z = A$ pour tout $z \in \Zcal$,
+où $A \in L(E, \R^p)$ est un opérateur fixé. Le modèle~\eqref{eq:modele}
+se réduit alors à
+\begin{equation}
+    Y_i = A\theta + \sigma E_i, \qquad i \in \{1, \ldots, n\}.
+    \label{eq:modele_simple}
+\end{equation}
+Il s'agit d'un modèle linéaire gaussien : chaque observation $Y_i$ est une
+version bruitée de $A\theta$, sans transformation cachée. On suppose de plus
+que $A^\top A$ est inversible, ce qui est équivalent à l'injectivité de $A$
+et constitue une condition nécessaire d'identifiabilité.
+
+\paragraph{Densité et log-vraisemblance.}
+Conditionnellement à $\theta$, chaque $Y_i$ suit la loi $\Ncal(A\theta, \sigma^2\Id_p)$,
+de densité
+\[
+    p(y\,;\,\theta)
+    = \frac{1}{(2\pi\sigma^2)^{p/2}}
+      \exp\!\left(-\frac{\norm{y - A\theta}^2}{2\sigma^2}\right).
+\]
+Les observations étant i.i.d., la log-vraisemblance s'écrit
+\[
+    \ell_n(\theta)
+    = -\frac{np}{2}\log(2\pi\sigma^2)
+      - \frac{1}{2\sigma^2}\sum_{i=1}^{n}\norm{Y_i - A\theta}^2.
+\]
+Sa maximisation en $\theta$ est équivalente à la minimisation du critère des
+moindres carrés
+\begin{equation}
+    F(\theta) = \sum_{i=1}^{n}\norm{Y_i - A\theta}^2.
+    \label{eq:moindres_carres_simple}
+\end{equation}
+
+\paragraph{Estimateur du maximum de vraisemblance.}
+En notant $\bar{Y}_n = \frac{1}{n}\sum_{i=1}^{n} Y_i$ la moyenne empirique, on
+décompose
+\[
+    F(\theta)
+    = n\,\norm{\bar{Y}_n - A\theta}^2
+      + \sum_{i=1}^{n}\norm{Y_i - \bar{Y}_n}^2,
+\]
+où le second terme ne dépend pas de $\theta$ (car $\sum_i(Y_i - \bar{Y}_n) = 0$).
+Minimiser $F$ revient donc à minimiser $\norm{\bar{Y}_n - A\theta}^2$, qui est convexe en $\theta$, dont
+l'annulation du gradient donne les équations normales
+\[
+    A^\top A\,\theta = A^\top \bar{Y}_n.
+\]
+
+\begin{proposition}
+Sous l'hypothèse que $A^\top A$ est inversible, le problème de maximum de
+vraisemblance associé au modèle~\eqref{eq:modele_simple} admet un unique
+maximiseur~:
+\begin{equation}
+    \hat{\theta}_n
+    = \bigl(A^\top A\bigr)^{-1}A^\top \bar{Y}_n
+    = \frac{1}{n}\bigl(A^\top A\bigr)^{-1}A^\top\sum_{i=1}^{n} Y_i.
+    \label{eq:estimateur_simple}
+\end{equation}
+\end{proposition}
+
+\begin{remark}
+L'estimateur~\eqref{eq:estimateur_simple} est l'unique $\theta \in E$ tel que
+$A\theta$ soit le projeté orthogonal de $\bar{Y}_n$ sur $\mathrm{Im}(A)$.
+En notant $A^\dagger = (A^\top A)^{-1}A^\top$ le pseudo-inverse gauche de $A$,
+on a simplement $\hat{\theta}_n = A^\dagger\bar{Y}_n$.
+\end{remark}
 
 \subsection{Convexité et résolution exacte}
 \label{subsec:convexite_simple}
@@ -448,11 +517,87 @@ et on observe $(Y_i)_j = \theta(x_j - Z_i) + (E_i)_j$.
 % - Nombre minimal de données n pour avoir epsilon_n <= epsilon (epsilon > 0 donné)
 % - Discussion : rôle de sigma, de la dimension de E, de la structure de A
 
+\paragraph{Erreur quadratique.}
+Naturellement pour estimer la précision de notre estimateur des moindres
+carrés, on utilise l'erreur quadratique :
+\[
+    \epsilon_n^2 = \E_{\theta}\!\left[\norm{\hat{\theta}_n - \theta}^2\right].
+\]
+On a
+\begin{align*}
+    \hat{\theta}_n
+    &= \frac{1}{n}\bigl(A^\top A\bigr)^{-1}A^\top\sum_{i=1}^{n} Y_i \\
+    &= \frac{1}{n}\bigl(A^\top A\bigr)^{-1}A^\top\sum_{i=1}^{n} (A\theta + \sigma E_i) \\
+    &= \theta + \frac{\sigma}{n}(A^\top A)^{-1}A^\top \sum_{i=1}^{n} E_i.
+\end{align*}
+
+Donc la variable aléatoire $\hat{\theta_n} - \theta$ suit une 
+$\mathcal{N}(0, \frac{\sigma^2}{n}(A^TA)^{-1} )$.
+
+\paragraph{Proposition 2.3.} 
+Soit $W$ une variable aléatoire de loi $\mathcal{N}(\mu, \Sigma)$, alors
+\begin{align*}
+    \mathbb{E}[\norm{W}_2 ^2] = \Tr(\Sigma)
+    + \norm{\mu}_2 ^2
+\end{align*}
+
+\paragraph{Corollaire 2.4.}
+L'erreur quadratique $\epsilon_n^2$ s'écrit alors
+\begin{align*}
+    \epsilon_n^2 = \frac{\sigma^2}{n} \Tr((A^TA)^{-1})
+\end{align*}
+
+
 \subsection{Ce que ce cas enseigne sur le cas général}
 \label{subsec:lecons}
-% - Quand A_z varie avec z, l'estimateur explicite n'existe plus
-% - L'intégration sur les Z_i cachés rend la vraisemblance non quadratique
-% - Motivation pour les algorithmes itératifs des sections suivantes
+
+Le cas simplifié étudié dans cette section livre deux enseignements qui servent
+de référence pour la suite.
+
+\paragraph{Ce que l'on retient.}
+Quand l'opérateur est fixe ($A_z = A$ pour tout $z$), la log-vraisemblance est
+quadratique en $\theta$ et son maximum s'obtient par simple inversion de
+$A^\top A$. La formule $\epsilon_n^2 = \frac{\sigma^2}{n}\Tr\bigl((A^\top A)^{-1}\bigr)$
+quantifie précisément le compromis entre le bruit $\sigma$, la géométrie de $A$
+(via la trace de son inverse de Gram) et le nombre de données $n$ : l'erreur
+décroît en $1/\sqrt{n}$.
+
+\paragraph{Ce qui change avec les variables cachées.}
+Dès que $A_z$ dépend de $z$, deux difficultés apparaissent simultanément.
+
+\textit{Perte d'information par la moyenne.}
+L'espérance d'une observation vaut
+\[
+    \E[Y_i] = \int_\Zcal A_z\theta\,\mathrm{d}\mu(z) =: \bar{A}\theta,
+\]
+où $\bar{A} = \int_\Zcal A_z\,\mathrm{d}\mu(z)$. Dans le Cas~1 (translations
+uniformes sur le tore), ce calcul donne $(\bar{A}\theta)_j = \bar{\theta}$ pour
+tout $j$, où $\bar{\theta}$ est la moyenne de $\theta$ sur le tore : l'intégration
+sur les translations efface toute information de forme. La moyenne empirique
+$\bar{Y}_n$ converge donc vers un signal constant, et non vers $A\theta$.
+L'inversion directe de $\bar{A}$ ne peut pas restituer $\theta$.
+
+\textit{Non-quadraticité de la log-vraisemblance.}
+La vraisemblance marginale s'obtient en intégrant sur les variables cachées :
+\[
+    p(Y_i\,;\,\theta)
+    = \int_\Zcal \frac{1}{(2\pi\sigma^2)^{p/2}}
+      \exp\!\left(-\frac{\norm{Y_i - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}\mu(z).
+\]
+La log-vraisemblance $\ell_n(\theta) = \sum_{i=1}^n \log p(Y_i\,;\,\theta)$
+est une somme de logarithmes d'intégrales exponentielles --- une structure
+\textit{log-sum-exp} --- qui n'est plus quadratique en $\theta$. Il n'existe
+pas de forme close pour son maximiseur, et les équations normales~\eqref{eq:moindres_carres_simple}
+n'ont plus d'analogue.
+
+\paragraph{Perspectives.}
+Ces deux obstacles motivent les algorithmes de la Section~\ref{sec:optimisation} :
+la descente de gradient sur $\ell_n$, qui exploite sa différentiabilité, et
+l'algorithme EM, dont chaque itération se ramène --- grâce aux données complètes
+--- à un problème quadratique convexe analogue à~\eqref{eq:moindres_carres_simple}.
+La formule $\epsilon_n^2 = \frac{\sigma^2}{n}\Tr\bigl((A^\top A)^{-1}\bigr)$
+servira de référence pour évaluer le surcoût statistique dû aux variables
+cachées, analysé en Section~\ref{sec:analyse_erreur}.
 
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -535,6 +680,14 @@ et on observe $(Y_i)_j = \theta(x_j - Z_i) + (E_i)_j$.
 % - Courbes epsilon_n en fonction de n pour différents sigma (Cas 1)
 % - Courbes epsilon_n en fonction de sigma pour différents n
 % - Impact de d et p : discussion
+
+% ════════════════════════════════════════════════════════════════════════════
+\newpage
+\section{Régularisation pour les problèmes inverses mal posés}
+\label{subsec:régularisation}
+% 
+
+
 
 
 % ════════════════════════════════════════════════════════════════════════════
