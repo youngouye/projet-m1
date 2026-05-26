@@ -124,8 +124,8 @@
 \addcontentsline{toc}{section}{Introduction}
 \label{sec:introduction}
 
-La détermination de la structure tridimensionnelle des macromolécules biologiques
---- protéines, virus, complexes ribosomaux --- est l'une des questions centrales
+La détermination de la structure tridimensionnelle des macromolécules biologiques: 
+protéines, virus, complexes ribosomaux, est l'une des questions centrales
 de la biologie structurale moderne. Comprendre la géométrie précise d'une protéine,
 c'est comprendre son fonctionnement, ses interactions avec d'autres molécules, et
 ouvrir la voie à la conception rationnelle de médicaments. Depuis les années 2010,
@@ -210,8 +210,8 @@ Les variables $(Z_i)$ jouent le rôle de \textit{variables cachées} : elles
 déterminent quelle transformation linéaire $A_{Z_i}$ est appliquée à $\theta$
 avant observation, mais elles ne sont pas accessibles à l'observateur.
 Chaque $Y_i$ est donc une version transformée et bruitée de $\theta$, dont
-la transformation elle-même est inconnue. C'est cette double incertitude ---
-sur $\theta$ et sur les $Z_i$ --- qui constitue la difficulté centrale du problème.
+la transformation elle-même est inconnue. C'est cette double incertitude,
+sur $\theta$ et sur les $Z_i$,  qui constitue la difficulté centrale du problème.
 % - Espace de Hilbert E, espace mesuré (Z, F, mu)
 % - Opérateurs A_z in L(E, R^p)
 % - Présentation du modèle (M) : Y_i = A_{Z_i} theta + sigma E_i
@@ -225,7 +225,7 @@ sur $\theta$ et sur les $Z_i$ --- qui constitue la difficulté centrale du probl
 
 Le premier cas d'application est celui des \textit{translations sur le tore}.
 On note $\mathbb{T} = \mathbb{R} / 2\pi\mathbb{Z}$ le tore unidimensionnel,
-que l'on identifie à l'intervalle $[0, 2\pi)$ muni de la mesure de Lebesgue.
+que l'on identifie à l'intervalle $[0, 2\pi[$ muni de la mesure de Lebesgue.
 L'espace ambiant est $L^2(\mathbb{T})$, l'espace des fonctions de carré intégrable
 et $2\pi$-périodiques, muni du produit scalaire
 \[
@@ -260,8 +260,8 @@ La condition $p \geq d$ garantit que l'évaluation sur la grille est injective
 sur $E$, ce qui est nécessaire pour l'identifiabilité du problème.
 
 \paragraph{Opérateur de translation.}
-L'espace des variables cachées est $\Zcal = [0, 2\pi)$ muni de la mesure de
-Lebesgue normalisée. Pour $z \in [0, 2\pi)$ et $\theta \in E$, l'opérateur
+L'espace des variables cachées est $\Zcal = [0, 2\pi[$ muni de la mesure de
+Lebesgue normalisée. Pour $z \in [0, 2\pi[$ et $\theta \in E$, l'opérateur
 $A_z \in L(E, \R^p)$ est défini par évaluation de la translatée de $\theta$ :
 \[
     (A_z\theta)_j = \theta(x_j - z), \qquad j \in \{0, \ldots, p-1\},
@@ -271,7 +271,7 @@ est le vecteur des valeurs de $\theta$ décalé de $z$ sur la grille.
 
 \begin{remark}
     Puisque $\theta \in E$ est un polynôme trigonométrique, sa translatée
-    $x \mapsto \theta(x - z)$ appartient encore à $E$ pour tout $z \in [0, 2\pi)$.
+    $x \mapsto \theta(x - z)$ appartient encore à $E$ pour tout $z \in [0, 2\pi[$.
     L'opérateur $A_z$ est donc bien défini et sa structure se lit aisément dans la
     base de Fourier : si $\theta = \sum_k \hat{\theta}_k\, e^{ikx}$, alors
     \[
@@ -288,7 +288,7 @@ Le modèle~\eqref{eq:modele} se spécialise ici en
     Y_i = A_{Z_i}\theta + \sigma E_i \in \R^p,
     \qquad (Y_i)_j = \theta(x_j - Z_i) + \sigma\,(E_i)_j,
 \]
-où les $Z_i$ sont i.i.d. de loi uniforme sur $[0, 2\pi)$, et les $(E_i)_j$
+où les $Z_i$ sont i.i.d. de loi uniforme sur $[0, 2\pi[$, et les $(E_i)_j$
 sont i.i.d. $\Ncal(0, 1)$. Chaque observation $Y_i$ est donc un échantillonnage
 bruité de $\theta$ sur la grille, après une translation aléatoire inconnue.
 L'objectif est de reconstruire $\theta$ à partir des $n$ vecteurs $Y_1, \ldots, Y_n$,
@@ -299,8 +299,8 @@ Ce cas constitue l'analogue unidimensionnel du problème de reconstruction
 moléculaire décrit en introduction. Le signal $\theta$ joue le rôle de la structure
 à reconstruire, la translation aléatoire $Z_i$ simule l'orientation inconnue de la
 molécule, et la projection sur la grille correspond à l'acquisition d'une image
-discrétisée. Sa relative simplicité analytique --- notamment la diagonalisation
-de $A_z$ dans la base de Fourier --- en fait le terrain naturel pour développer
+discrétisée. Sa relative simplicité analytique, notamment la diagonalisation
+de $A_z$ dans la base de Fourier, en fait le terrain naturel pour développer
 et valider les méthodes d'estimation étudiées dans ce rapport.
 
 \subsubsection{Cas 2 : rotations et projections en 2D}
@@ -318,12 +318,12 @@ scalaire
     \inner{f}{g} = \int_{B(0,1)} f(\mathbf{x})\,\overline{g(\mathbf{x})}\,\mathrm{d}\mathbf{x}.
 \]
 Le paramètre inconnu $\theta \in E$, où $E$ est un sous-espace de dimension
-finie $d$ de $L^2(B(0,1))$, représente la densité bidimensionnelle à reconstruire
---- l'analogue discret de la densité électronique d'une molécule.
+finie $d$ de $L^2(B(0,1))$, représente la densité bidimensionnelle à reconstruire,
+l'analogue discret de la densité électronique d'une molécule.
 
 \paragraph{Opérateur de rotation.}
-L'espace des variables cachées est $\Zcal = [0, 2\pi)$ muni de la mesure de
-Lebesgue normalisée. Pour $z \in [0, 2\pi)$, on note $R_z$ la rotation plane
+L'espace des variables cachées est $\Zcal = [0, 2\pi[$ muni de la mesure de
+Lebesgue normalisée. Pour $z \in [0, 2\pi[$, on note $R_z$ la rotation plane
 d'angle $z$, de matrice
 \[
     R_z = \begin{pmatrix} \cos z & -\sin z \\ \sin z & \cos z \end{pmatrix}.
@@ -349,7 +349,7 @@ verticale $\{x\} \times \R$.
 
 \begin{remark}
     La transformée de Radon complète de $\theta$ consiste à calculer $P(R_z\theta)$
-    pour tous les angles $z \in [0, \pi)$, ce qui correspond à projeter $\theta$ selon
+    pour tous les angles $z \in [0, \pi[$, ce qui correspond à projeter $\theta$ selon
     toutes les directions du plan. Le théorème de la tranche de Fourier établit que la
     transformée de Fourier 1D de $P(R_z\theta)$ en $x$ coïncide avec la transformée
     de Fourier 2D de $\theta$ restreinte à la droite de direction $z$. C'est le
@@ -379,16 +379,16 @@ Le modèle~\eqref{eq:modele} se spécialise en
     (Y_i)_j = \int_{\R} \theta\!\left(R_{-Z_i}\begin{pmatrix}x_j\\y\end{pmatrix}\right)
     \mathrm{d}y + \sigma\,(E_i)_j,
 \]
-où les $Z_i$ sont i.i.d. de loi uniforme sur $[0, 2\pi)$, et les $(E_i)_j$ sont
+où les $Z_i$ sont i.i.d. de loi uniforme sur $[0, 2\pi[$, et les $(E_i)_j$ sont
 i.i.d. $\Ncal(0,1)$. Chaque $Y_i$ est un sinogramme partiel bruité de $\theta$ :
 c'est la projection de $\theta$ selon une direction aléatoire inconnue,
 échantillonnée sur $p$ points.
 
 \paragraph{Comparaison avec le Cas 1.}
 Le Cas 2 est structurellement plus proche du problème physique de départ que
-le Cas 1. Le groupe des variables cachées est le même ($[0, 2\pi)$ dans les deux
-cas), mais l'opérateur $A_z$ est ici un opérateur intégral --- la composition
-d'une rotation et d'une projection --- là où il était simplement une évaluation
+le Cas 1. Le groupe des variables cachées est le même ($[0, 2\pi[$ dans les deux
+cas), mais l'opérateur $A_z$ est ici un opérateur intégral, la composition
+d'une rotation et d'une projection, là où il était simplement une évaluation
 décalée dans le Cas 1. La diagonalisation dans la base de Fourier n'est plus
 aussi directe, ce qui rend les développements analytiques plus délicats et les
 algorithmes d'estimation plus coûteux numériquement. Pour ces raisons, le Cas 2
@@ -534,18 +534,45 @@ On a
 Donc la variable aléatoire $\hat{\theta_n} - \theta$ suit une 
 $\mathcal{N}(0, \frac{\sigma^2}{n}(A^TA)^{-1} )$.
 
-\paragraph{Proposition 2.3.} 
+\begin{proposition}
 Soit $W$ une variable aléatoire de loi $\mathcal{N}(\mu, \Sigma)$, alors
 \begin{align*}
     \mathbb{E}[\norm{W}_2 ^2] = \Tr(\Sigma)
     + \norm{\mu}_2 ^2
 \end{align*}
+\end{proposition}
 
-\paragraph{Corollaire 2.4.}
+\begin{proof}
+On écrit $W = \mu + \varepsilon$ où $\varepsilon \sim \Ncal(0, \Sigma)$, puis on
+développe :
+\[
+    \norm{W}^2
+    = \norm{\mu + \varepsilon}^2
+    = \norm{\mu}^2 + 2\inner{\mu}{\varepsilon} + \norm{\varepsilon}^2.
+\]
+En prenant l'espérance et en utilisant $\E[\varepsilon] = 0$ :
+\[
+    \E\!\left[\norm{W}^2\right]
+    = \norm{\mu}^2 + \E\!\left[\norm{\varepsilon}^2\right].
+\]
+Il reste à calculer $\E[\norm{\varepsilon}^2]$. On utilise l'identité
+$\norm{\varepsilon}^2 = \varepsilon^\top\varepsilon = \Tr(\varepsilon\varepsilon^\top)$
+et la linéarité de la trace :
+\[
+    \E\!\left[\norm{\varepsilon}^2\right]
+    = \E\!\left[\Tr(\varepsilon\varepsilon^\top)\right]
+    = \Tr\!\left(\E[\varepsilon\varepsilon^\top]\right)
+    = \Tr(\Sigma).
+\]
+On conclut $\E[\norm{W}^2] = \norm{\mu}^2 + \Tr(\Sigma)$.
+\end{proof}
+
+\begin{corollary}
 L'erreur quadratique $\epsilon_n^2$ s'écrit alors
 \begin{align*}
     \epsilon_n^2 = \frac{\sigma^2}{n} \Tr((A^TA)^{-1})
 \end{align*}
+\end{corollary}
 
 
 \subsection{Ce que ce cas enseigne sur le cas général}
@@ -585,16 +612,16 @@ La vraisemblance marginale s'obtient en intégrant sur les variables cachées :
       \exp\!\left(-\frac{\norm{Y_i - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}\mu(z).
 \]
 La log-vraisemblance $\ell_n(\theta) = \sum_{i=1}^n \log p(Y_i\,;\,\theta)$
-est une somme de logarithmes d'intégrales exponentielles --- une structure
-\textit{log-sum-exp} --- qui n'est plus quadratique en $\theta$. Il n'existe
+est une somme de logarithmes d'intégrales exponentielles, une structure
+\textit{log-sum-exp}, qui n'est plus quadratique en $\theta$. Il n'existe
 pas de forme close pour son maximiseur, et les équations normales~\eqref{eq:moindres_carres_simple}
 n'ont plus d'analogue.
 
 \paragraph{Perspectives.}
 Ces deux obstacles motivent les algorithmes de la Section~\ref{sec:optimisation} :
 la descente de gradient sur $\ell_n$, qui exploite sa différentiabilité, et
-l'algorithme EM, dont chaque itération se ramène --- grâce aux données complètes
---- à un problème quadratique convexe analogue à~\eqref{eq:moindres_carres_simple}.
+l'algorithme EM, dont chaque itération se ramène, grâce aux données complètes,
+à un problème quadratique convexe analogue à~\eqref{eq:moindres_carres_simple}.
 La formule $\epsilon_n^2 = \frac{\sigma^2}{n}\Tr\bigl((A^\top A)^{-1}\bigr)$
 servira de référence pour évaluer le surcoût statistique dû aux variables
 cachées, analysé en Section~\ref{sec:analyse_erreur}.
@@ -607,60 +634,523 @@ cachées, analysé en Section~\ref{sec:analyse_erreur}.
 
 \subsection{Densité du couple \texorpdfstring{$(Y, Z)$}{(Y,Z)} et vraisemblance marginale}
 \label{subsec:densite}
-% - Densité conditionnelle de Y | Z=z : gaussienne N(A_z theta, sigma^2 Id_p)
-% - Densité jointe (Y, Z) par rapport à lambda_p x mu
-% - Vraisemblance marginale : intégration sur Z -> L(theta ; Y_1,...,Y_n)
-% - Log-vraisemblance : somme de log-somexp
+
+On revient au modèle général~\eqref{eq:modele}, où les $Z_i$ sont i.i.d.\ de
+densité $f_Z$ par rapport à $\mu$, et les $E_i \sim \Ncal(0, \Id_p)$ sont
+indépendants des $Z_i$.
+
+\paragraph{Loi conditionnelle de $Y_i$ sachant $Z_i$.}
+Conditionnellement à $Z_i = z$, le modèle~\eqref{eq:modele} donne
+$Y_i = A_z\theta + \sigma E_i$, de sorte que
+\[
+    Y_i \mid Z_i = z \;\sim\; \Ncal\bigl(A_z\theta,\, \sigma^2\Id_p\bigr).
+\]
+La densité conditionnelle de $Y_i$ sachant $Z_i = z$, par rapport à la mesure
+de Lebesgue $\lambda_p$ sur $\R^p$, est donc
+\begin{equation}
+    p(y \mid z\,;\,\theta)
+    = \frac{1}{(2\pi\sigma^2)^{p/2}}
+      \exp\!\left(-\frac{\norm{y - A_z\theta}^2}{2\sigma^2}\right).
+    \label{eq:densite_cond}
+\end{equation}
+
+\paragraph{Densité jointe du couple $(Y_i, Z_i)$.}
+Les variables $Y_i$ et $Z_i$ ne sont pas indépendantes, $Z_i$ détermine la
+transformation appliquée à $\theta$ avant que $Y_i$ soit observé, mais leur
+loi jointe se factorise selon
+\[
+    p(y, z\,;\,\theta)
+    = p(y \mid z\,;\,\theta)\cdot f_Z(z)
+    = \frac{f_Z(z)}{(2\pi\sigma^2)^{p/2}}
+      \exp\!\left(-\frac{\norm{y - A_z\theta}^2}{2\sigma^2}\right),
+\]
+densité par rapport à $\lambda_p \otimes \mu$ sur $\R^p \times \Zcal$.
+
+\paragraph{Vraisemblance marginale.}
+L'observateur ne dispose que des $Y_i$ : les $Z_i$ sont cachés. La densité
+marginale de $Y_i$ s'obtient en intégrant la loi jointe sur $\Zcal$ :
+\begin{equation}
+    p(y\,;\,\theta)
+    = \int_\Zcal p(y \mid z\,;\,\theta)\,f_Z(z)\,\mathrm{d}\mu(z)
+    = \frac{1}{(2\pi\sigma^2)^{p/2}}
+      \int_\Zcal f_Z(z)\,
+      \exp\!\left(-\frac{\norm{y - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}\mu(z).
+    \label{eq:densite_marginale}
+\end{equation}
+Les observations $Y_1, \ldots, Y_n$ étant i.i.d.\ de densité~\eqref{eq:densite_marginale},
+la log-vraisemblance marginale vaut
+\begin{equation}
+    \ell_n(\theta)
+    = \sum_{i=1}^{n} \log p(Y_i\,;\,\theta)
+    = -\frac{np}{2}\log(2\pi\sigma^2)
+      + \sum_{i=1}^{n} \log\!\int_\Zcal f_Z(z)\,
+        \exp\!\left(-\frac{\norm{Y_i - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}\mu(z).
+    \label{eq:logvraisemblance}
+\end{equation}
+Chaque terme de la somme est le logarithme d'une intégrale d'exponentielles :
+une structure \textit{log-sum-exp}, qui contraste avec la forme quadratique
+du cas sans variables cachées~\eqref{eq:moindres_carres_simple}.
+
+\paragraph{Application au Cas~1.}
+Dans le Cas~1, $\Zcal = [0, 2\pi[$, $f_Z \equiv 1$ (loi uniforme normalisée) et
+$A_z\theta$ est l'évaluation de $\theta$ translatée de $z$ sur la grille.
+La log-vraisemblance~\eqref{eq:logvraisemblance} devient
+\[
+    \ell_n(\theta)
+    = -\frac{np}{2}\log(2\pi\sigma^2) - n\log(2\pi)
+      + \sum_{i=1}^{n} \log\!\int_0^{2\pi}
+        \exp\!\left(-\frac{\norm{Y_i - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}z.
+\]
+En pratique, l'intégrale sur $[0, 2\pi[$ est approchée par une quadrature de
+Riemann sur $n_z$ points équirépartis $z_q = 2\pi q/n_z$ :
+\[
+    \int_0^{2\pi}
+    \exp\!\left(-\frac{\norm{y - A_z\theta}^2}{2\sigma^2}\right)\mathrm{d}z
+    \;\approx\;
+    \frac{2\pi}{n_z}\sum_{q=0}^{n_z-1}
+    \exp\!\left(-\frac{\norm{y - A_{z_q}\theta}^2}{2\sigma^2}\right).
+\]
+Le calcul numérique de ce log-sum-exp requiert une attention particulière pour
+éviter les dépassements en virgule flottante, point traité en
+Section~\ref{subsec:gradient}.
 
 \subsection{Propriétés analytiques de la log-vraisemblance}
 \label{subsec:proprietes_ll}
-% - Régularité (différentiabilité, gradient, hessien)
-% - Convexité : la fonction à minimiser est-elle convexe ? Justification
+
+On étudie ici les propriétés de la log-vraisemblance marginale~\eqref{eq:logvraisemblance}
+vue comme fonction de $\theta \in E \simeq \R^d$. Pour alléger les notations, on pose
+\[
+    q_i(z, \theta) = \frac{\norm{Y_i - A_z\theta}^2}{2\sigma^2},
+\]
+de sorte que $\ell_n(\theta) = \sum_{i=1}^n \log \int_\Zcal f_Z(z)\, e^{-q_i(z,\theta)}\,\mathrm{d}\mu(z)$
+à une constante additive près.
+
+\paragraph{Régularité.}
+
+\begin{proposition}
+La log-vraisemblance $\ell_n : \R^d \to \R$ est de classe $C^\infty$.
+\end{proposition}
+
+\begin{proof}
+Notons $I_i(\theta) = \int_\Zcal f_Z(z)\, e^{-q_i(z,\theta)}\,\mathrm{d}\mu(z)$.
+Puisque $q_i(z,\theta) \geq 0$, on a $0 < e^{-q_i(z,\theta)} \leq 1$ pour tout $z$ et tout
+$\theta$, ce qui implique $I_i(\theta) \geq \int_\Zcal f_Z(z)\,\mathrm{d}\mu(z) \cdot e^{-C}$
+pour tout compact. En particulier, $I_i(\theta) > 0$ partout, et $\log$ est $C^\infty$
+sur $\R_{>0}$.
+
+Il suffit donc de montrer que $I_i \in C^\infty(\R^d)$. On dérive formellement sous
+le signe intégral : la dérivée partielle d'ordre $k$ de l'intégrande est de la forme
+$P_k(z,\theta)\, e^{-q_i(z,\theta)}$, où $P_k$ est un polynôme de degré $k$ en les
+composantes de $Y_i - A_z\theta$ et en celles de $A_z^\top(Y_i - A_z\theta)$.
+Pour dominer uniformément en $z$, on utilise la borne classique
+\[
+    t^k\, e^{-t^2/(2\sigma^2)} \leq \left(\frac{k\sigma^2}{e}\right)^{k/2}
+    \qquad \forall\, t \geq 0,
+\]
+avec $t = \norm{Y_i - A_z\theta}$, combinée à la borne uniforme en $z$ sur la norme
+opérateur :
+\[
+    \sup_{z \in \Zcal} \norm{A_z}_{\mathrm{op}} < \infty.
+\]
+Dans le Cas~1, cette borne est exactement $\sqrt{p}$, indépendant de $z$, car $A_z^\top A_z = p\,\Id_d$
+pour toute translation $z$. Dans le Cas~2, elle découle de la compacité de $SO(2)$
+et de la continuité de $z \mapsto A_z$.
+
+On obtient ainsi une fonction dominante intégrable sur $\Zcal$ (en fait constante),
+et le théorème de dérivation sous le signe intégral s'applique à tout ordre.
+\end{proof}
+
+\begin{remark}
+    La même démonstration vaut lorsque $\Zcal$ est discret et fini, auquel cas
+    l'intégrale devient une somme finie : la somme de fonctions $C^\infty$
+    est $C^\infty$.
+\end{remark}
+
+\paragraph{Gradient et poids a posteriori.}
+
+La régularité établie ci-dessus garantit l'existence du gradient de $\ell_n$.
+On le calcule en dérivant sous le signe intégral. On introduit pour chaque
+couple $(i, z)$ les \emph{poids a posteriori}
+\begin{equation}
+    w_{i,z}(\theta)
+    = \frac{f_Z(z)\, e^{-q_i(z,\theta)}}
+           {\displaystyle\int_\Zcal f_Z(z')\, e^{-q_i(z',\theta)}\,\mathrm{d}\mu(z')},
+    \label{eq:poids_aposteriori}
+\end{equation}
+qui vérifient $w_{i,z}(\theta) \geq 0$ et $\int_\Zcal w_{i,z}(\theta)\,\mathrm{d}\mu(z) = 1$.
+Ces poids représentent la probabilité conditionnelle que la variable cachée $Z_i$
+vaille $z$, sachant l'observation $Y_i$ et le paramètre courant $\theta$.
+
+\begin{proposition}
+\label{prop:gradient_ll}
+Le gradient de $\ell_n$ en $\theta$ est donné par
+\begin{equation}
+    \nabla_\theta \ell_n(\theta)
+    = \frac{1}{\sigma^2}
+      \sum_{i=1}^{n} \int_\Zcal w_{i,z}(\theta)\,
+      A_z^\top\bigl(Y_i - A_z\theta\bigr)\,\mathrm{d}\mu(z).
+    \label{eq:gradient_ll}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+On dérive $\log I_i(\theta)$ en appliquant la règle de la chaîne :
+\[
+    \nabla_\theta \log I_i(\theta)
+    = \frac{\nabla_\theta I_i(\theta)}{I_i(\theta)}.
+\]
+Puis, en dérivant sous le signe intégral (justifié par la domination établie plus haut) :
+\[
+    \nabla_\theta I_i(\theta)
+    = \int_\Zcal f_Z(z)\, e^{-q_i(z,\theta)}\,
+      \nabla_\theta\bigl(-q_i(z,\theta)\bigr)\,\mathrm{d}\mu(z)
+    = \frac{1}{\sigma^2} \int_\Zcal f_Z(z)\, e^{-q_i(z,\theta)}\,
+      A_z^\top(Y_i - A_z\theta)\,\mathrm{d}\mu(z).
+\]
+En divisant par $I_i(\theta)$, on reconnaît les poids~\eqref{eq:poids_aposteriori},
+et la formule~\eqref{eq:gradient_ll} s'obtient en sommant sur $i$.
+\end{proof}
+
+\begin{remark}
+Le gradient s'annule en $\theta^*$ si et seulement si $\theta^*$ satisfait
+l'équation de cohérence
+\[
+    \left(\int_\Zcal\!\sum_{i=1}^n w_{i,z}(\theta^*)\, A_z^\top A_z\,\mathrm{d}\mu(z)\right)\theta^*
+    = \int_\Zcal\!\sum_{i=1}^n w_{i,z}(\theta^*)\, A_z^\top Y_i\,\mathrm{d}\mu(z).
+\]
+Les poids $w_{i,z}(\theta^*)$ dépendent eux-mêmes de $\theta^*$ : c'est
+précisément cette structure de point fixe que l'algorithme EM exploite
+(Section~\ref{subsec:em}).
+\end{remark}
+
+\paragraph{Coercivité.}
+
+\begin{proposition}
+La log-vraisemblance $\ell_n$ est coercive : $\ell_n(\theta) \to -\infty$ lorsque
+$\norm{\theta} \to +\infty$. En particulier, le problème de maximisation admet
+au moins un maximum global.
+\end{proposition}
+
+\begin{proof}
+Pour $\norm{\theta} \to \infty$, comme $A_z$ est injectif (hypothèse $p \geq d$)
+et $z \mapsto A_z$ est bornée, on a $\norm{A_z\theta} \to \infty$ uniformément en
+$z$ sur tout compact de $\Zcal$. Donc $q_i(z,\theta) \to +\infty$, chaque terme
+$e^{-q_i(z,\theta)} \to 0$, et par le lemme de Fatou $I_i(\theta) \to 0$, d'où
+$\log I_i(\theta) \to -\infty$. L'ensemble des maximiseurs est donc non vide et
+compact.
+\end{proof}
+
+\paragraph{Non-concavité.}
+
+Contrairement au cas sans variables cachées (Section~\ref{sec:sans_cachees}),
+où $-\ell_n$ est une forme quadratique convexe, la log-vraisemblance marginale
+est en général \emph{non concave}.
+
+\begin{remark}
+    La non-concavité provient de la structure log-sum-exp. Un mélange de gaussiennes
+    n'est pas log-concave en général : la densité peut présenter plusieurs modes,
+    et $\ell_n$ hérite de cette géométrie. Cela implique que la descente de gradient
+    peut converger vers un maximum local qui n'est pas global, et justifie l'usage
+    de multi-départs dans l'implémentation numérique.
+\end{remark}
+
+\paragraph{Comportements asymptotiques.}
+
+\begin{remark}
+    Deux régimes extrêmes illustrent la géométrie du problème.
+    Lorsque $\sigma \to 0$, les exponentielles $e^{-q_i(z,\theta)}$ se concentrent
+    sur le $z$ minimisant $\norm{Y_i - A_z\theta}^2$ : les poids $w_{i,z}(\theta)$
+    tendent vers une masse de Dirac en $\hat{z}_i(\theta)$, et le problème se
+    réduit à une estimation par affectation dure des variables cachées.
+    Lorsque $\sigma \to +\infty$, les poids deviennent uniformes ($w_{i,z} \to f_Z(z)$),
+    toute information sur les $Z_i$ est perdue, et la log-vraisemblance se
+    comporte comme une constante en $\theta$ — le problème est alors non identifiable.
+\end{remark}
+
 
 \subsection{Identifiabilité et choix d'une métrique adaptée}
 \label{subsec:identifiabilite}
-% - Pourquoi la norme standard || theta_hat - theta || est inadaptée (Cas 1)
-% - Invariance par translation : L(A_z theta) = L(A_z vartheta) pour certains theta != vartheta
-% - Reformulation : epsilon_n^2 = E[ inf_{L(A_z vartheta)=L(A_z theta)} || theta_hat - vartheta ||^2 ]
-% - Dans le Cas 1 : simplification avec inf_{a in [0,2pi]} || tau_a theta_hat - vartheta ||^2
+
+\begin{definition}[Identifiabilité]
+Le modèle~\eqref{eq:modele} est \emph{identifiable} si
+\[
+    p(\,\cdot\,;\,\theta) = p(\,\cdot\,;\,\theta')
+    \;\implies\; \theta = \theta'.
+\]
+En l'absence d'identifiabilité, plusieurs paramètres produisent les mêmes
+distributions d'observations : la log-vraisemblance admet plusieurs maximiseurs
+indiscernables par les données.
+\end{definition}
+
+\paragraph{Non-identifiabilité dans le Cas~1.}
+Dans le Cas~1, les translations forment un groupe d'invariance de la
+log-vraisemblance. Pour $a \in [0, 2\pi[$, on note $\tau_a$ l'opérateur de
+translation :
+\[
+    (\tau_a\theta)(x) = \theta(x - a), \qquad x \in [0, 2\pi[.
+\]
+
+\begin{proposition}
+\label{prop:invariance_translation}
+Pour tout $\theta \in E$ et tout $a \in [0, 2\pi[$,
+$\ell_n(\tau_a\theta) = \ell_n(\theta)$.
+\end{proposition}
+
+\begin{proof}
+L'opérateur $A_z$ évalue la translatée de $\theta$ sur la grille :
+$(A_z\theta)_j = \theta(x_j - z)$. On a donc
+\[
+    \bigl(A_z(\tau_a\theta)\bigr)_j
+    = (\tau_a\theta)(x_j - z)
+    = \theta(x_j - z - a)
+    = (A_{z+a}\theta)_j,
+\]
+soit $A_z(\tau_a\theta) = A_{z+a}\theta$. En substituant dans la
+log-vraisemblance~\eqref{eq:logvraisemblance} (Cas~1, $f_Z \equiv 1$) :
+\[
+    \ell_n(\tau_a\theta)
+    = C + \sum_{i=1}^{n} \log\!\int_0^{2\pi}
+      \exp\!\left(-\frac{\norm{Y_i - A_{z+a}\theta}^2}{2\sigma^2}\right)
+      \frac{\mathrm{d}z}{2\pi},
+\]
+où $C = -\frac{np}{2}\log(2\pi\sigma^2) - n\log(2\pi)$ ne dépend pas de $\theta$.
+Le changement de variable $z' = z + a \pmod{2\pi}$ laisse l'intégrale sur
+$[0, 2\pi[$ invariante (la mesure de Lebesgue est invariante par translation
+sur le tore), d'où $\ell_n(\tau_a\theta) = \ell_n(\theta)$.
+\end{proof}
+
+\paragraph{Inadaptation de la norme standard.}
+La Proposition~\ref{prop:invariance_translation} implique que si $\hat\theta_n$
+maximise $\ell_n$, alors $\tau_a\hat\theta_n$ le maximise aussi pour tout
+$a \in [0, 2\pi[$. Les données ne permettent donc d'estimer $\theta$ qu'à
+une translation près. Utiliser $\norm{\hat\theta_n - \theta}$ comme mesure
+d'erreur est alors inadapté : même un estimateur parfait «~à translation
+près~» peut donner une grande erreur si le décalage résiduel n'est pas
+corrigé.
+
+\begin{definition}[Orbite et distance quotient]
+L'\emph{orbite} de $\theta$ sous le groupe des translations est
+\[
+    [\theta] = \bigl\{\tau_a\theta : a \in [0, 2\pi[\bigr\}.
+\]
+La \emph{distance quotient} entre $[\hat\theta_n]$ et $[\theta]$ est
+\[
+    d\bigl([\hat\theta_n],\, [\theta]\bigr)
+    = \inf_{a \in [0, 2\pi[} \norm{\tau_a\hat\theta_n - \theta}.
+\]
+\end{definition}
+
+\paragraph{Erreur quadratique invariante.}
+On définit l'erreur quadratique adaptée au problème d'identifiabilité :
+\begin{equation}
+    \varepsilon_n^2(\sigma)
+    = \E\!\left[\inf_{a \in [0, 2\pi[} \norm{\tau_a\hat\theta_n - \theta}^2\right].
+    \label{eq:erreur_quotient}
+\end{equation}
+Cette quantité est invariante par toute transformation $\theta \mapsto \tau_a\theta$,
+nulle si et seulement si $\hat\theta_n \in [\theta]$ presque sûrement, et bien
+définie car l'infimum est atteint (l'application $a \mapsto \norm{\tau_a\hat\theta_n - \theta}^2$
+est continue sur le compact $[0, 2\pi[$).
+C'est~\eqref{eq:erreur_quotient} qui sera étudiée numériquement en
+Section~\ref{sec:analyse_erreur}.
 
 
 % ════════════════════════════════════════════════════════════════════════════
 \newpage
+
+
 \section{Résolution du problème d'optimisation}
 \label{sec:optimisation}
 
-\subsection{Approche directe : descente de gradient}
-\label{subsec:gradient}
-% - Calcul du gradient de la log-vraisemblance négative
-% - Algorithme de gradient à pas fixe / pas décroissant
-% - Analyse de la convergence (conditions suffisantes)
-% - Implémentation et résultats numériques (Cas 1)
+Nous cherchons à maximiser $\ell_n(\theta)$ sur $\R^d$. Deux approches sont présentées : la descente de gradient, qui exploite directement la différentiabilité de $\ell_n$, et l'algorithme EM, qui tire parti de la structure à données cachées pour ramener chaque itération à un problème quadratique explicite.
 
-\subsection{Algorithme Espérance-Maximisation}
+\subsection{Descente de gradient directe}
+\label{subsec:gradient}
+
+\subsubsection{Rappel du gradient}
+
+La Proposition~\ref{prop:gradient_ll} (Section~\ref{subsec:proprietes_ll}) établit que
+\[
+    \nabla_\theta \ell_n(\theta)
+    = \frac{1}{\sigma^2}
+      \sum_{i=1}^{n} \int_\Zcal w_{i,z}(\theta)\,
+      A_z^\top\bigl(Y_i - A_z\theta\bigr)\,\mathrm{d}\mu(z),
+\]
+où les poids a posteriori $w_{i,z}(\theta)$ sont définis en~\eqref{eq:poids_aposteriori}. Le gradient s'interprète comme une espérance pondérée des résidus $Y_i - A_z\theta$ par rapport à la loi a posteriori de $Z_i$ sachant $Y_i$.
+
+\subsubsection{Itération et choix du pas}
+
+À partir d'une initialisation $\theta^{(0)} \in \R^d$, l'itération de montée de gradient est
+\[
+    \theta^{(k+1)} = \theta^{(k)} + \eta_k\, \nabla_\theta \ell_n\!\left(\theta^{(k)}\right).
+\]
+
+\paragraph{Règle d'Armijo.}
+Le pas $\eta_k > 0$ est sélectionné par recherche linéaire par retrait (\emph{backtracking}) : en notant $g^{(k)} = \nabla_\theta \ell_n(\theta^{(k)})$, on cherche le plus grand élément de la suite $\eta_0, \eta_0/2, \eta_0/4, \ldots$ satisfaisant
+\begin{equation}
+    \ell_n\!\left(\theta^{(k)} + \eta\, g^{(k)}\right)
+    \;\geq\;
+    \ell_n\!\left(\theta^{(k)}\right) + c\,\eta\,\norm{g^{(k)}}^2,
+    \label{eq:armijo}
+\end{equation}
+avec $c \in (0,1)$ fixé (typiquement $c = 10^{-4}$). Cette condition garantit un accroissement suffisant de la log-vraisemblance à chaque pas ; son existence est assurée par la différentiabilité de $\ell_n$ (Proposition en début de Section~\ref{subsec:proprietes_ll}).
+
+\paragraph{Multi-départs.}
+La log-vraisemblance n'étant pas concave (Section~\ref{subsec:proprietes_ll}), on utilise plusieurs initialisations aléatoires et on retient la solution de plus haute vraisemblance finale.
+
+\subsubsection{Application au Cas 1}
+
+Dans le Cas~1, $A_z = \Phi(z)$ est la matrice d'évaluation $(p \times d)$ dont la colonne~$0$ vaut $\mathbf{1}$ et les colonnes $2k-1$, $2k$ valent $\cos(k(\cdot - z))$, $\sin(k(\cdot - z))$ évaluées sur la grille spatiale. Le gradient se spécialise en
+\[
+    \nabla_\theta \ell_n(\theta)
+    = \frac{1}{\sigma^2}
+      \sum_{i=1}^{n} \int_0^{2\pi} w_{i,z}(\theta)\,
+      \Phi(z)^\top\bigl(Y_i - \Phi(z)\theta\bigr)\,\frac{\mathrm{d}z}{2\pi},
+\]
+l'intégrale sur $[0,2\pi[$ étant approchée par quadrature de Riemann sur $n_z$ points (même discrétisation qu'en Section~\ref{subsec:densite}). Le coût par itération de gradient est $O(n \cdot n_z \cdot pd)$.
+
+\subsection{Algorithme Espérance-Maximisation (EM)}
 \label{subsec:em}
 
-\subsubsection{Principe général}
-\label{subsubsec:em_general}
-% - Données complètes vs données incomplètes
-% - Décomposition de la log-vraisemblance : identité de Fisher
-% - Étape E : calcul de Q(theta | theta^(k)) = E_{Z|Y,theta^(k)}[log p(Y,Z;theta)]
-% - Étape M : theta^(k+1) = argmax_theta Q(theta | theta^(k))
-% - Propriété fondamentale : croissance monotone de la vraisemblance
+\subsubsection{Log-vraisemblance des données complètes}
 
-\subsubsection{Application au modèle (M)}
-\label{subsubsec:em_modele}
-% - Calcul explicite de Q(theta | theta^(k)) pour le modèle (M)
-% - Montrer que l'étape M est un problème quadratique convexe
-% - Forme explicite de la solution (système linéaire)
-% - Implémentation et résultats numériques (Cas 1)
+Si les variables cachées $Z_1, \ldots, Z_n$ étaient observées, la log-vraisemblance \emph{complète} serait
+\begin{equation}
+    \ell_n^{\mathrm{c}}(\theta; Z)
+    = -\frac{np}{2}\log(2\pi\sigma^2)
+      - \frac{1}{2\sigma^2}\sum_{i=1}^{n}\norm{Y_i - A_{Z_i}\theta}^2
+      + \sum_{i=1}^{n}\log f_Z(Z_i).
+    \label{eq:ll_complete}
+\end{equation}
+Elle est \emph{quadratique} en $\theta$ : si les $Z_i$ étaient connus, son maximiseur serait accessible par un système linéaire analogue à~\eqref{eq:moindres_carres_simple}. L'algorithme EM exploite cette structure en remplaçant les $Z_i$ inconnus par leur loi a posteriori.
+
+\subsubsection{Fonction auxiliaire $Q$}
+
+À l'itération~$k$, on pose
+\begin{equation}
+    Q\bigl(\theta \mid \theta^{(k)}\bigr)
+    = \E_{\theta^{(k)}}\!\left[\ell_n^{\mathrm{c}}(\theta; Z) \;\Big|\; Y_1, \ldots, Y_n\right].
+    \label{eq:Q_function}
+\end{equation}
+Les termes de~\eqref{eq:ll_complete} indépendants de $\theta$ contribuent à une constante additive ; il reste
+\begin{equation}
+    Q\bigl(\theta \mid \theta^{(k)}\bigr)
+    = -\frac{1}{2\sigma^2}
+      \sum_{i=1}^{n} \int_\Zcal w_{i,z}\!\left(\theta^{(k)}\right)
+      \norm{Y_i - A_z\theta}^2\,\mathrm{d}\mu(z)
+      + \mathrm{cte},
+    \label{eq:Q_explicite}
+\end{equation}
+où les poids $w_{i,z}(\theta^{(k)})$ sont les poids a posteriori~\eqref{eq:poids_aposteriori} évalués au paramètre courant. La fonction $Q(\,\cdot \mid \theta^{(k)})$ est quadratique concave en $\theta$.
+
+\subsubsection{Étape E (Espérance)}
+
+Calculer les poids a posteriori $w_{i,z}(\theta^{(k)})$ pour tout $i$ et presque tout $z \in \Zcal$, par la définition~\eqref{eq:poids_aposteriori} appliquée à $\theta^{(k)}$ :
+\begin{equation}
+    w_{i,z}\!\left(\theta^{(k)}\right)
+    = \frac{f_Z(z)\,\exp\!\left(-\dfrac{\norm{Y_i - A_z\theta^{(k)}}^2}{2\sigma^2}\right)}
+           {\displaystyle\int_\Zcal f_Z(z')\,\exp\!\left(-\dfrac{\norm{Y_i - A_{z'}\theta^{(k)}}^2}{2\sigma^2}\right)\mathrm{d}\mu(z')}.
+    \label{eq:estep}
+\end{equation}
+
+\subsubsection{Étape M (Maximisation)}
+
+On maximise $Q(\theta \mid \theta^{(k)})$ en $\theta$. La fonction~\eqref{eq:Q_explicite} étant quadratique, on annule son gradient :
+\[
+    \nabla_\theta Q\bigl(\theta \mid \theta^{(k)}\bigr)
+    = \frac{1}{\sigma^2}
+      \sum_{i=1}^{n} \int_\Zcal w_{i,z}\!\left(\theta^{(k)}\right)
+      A_z^\top\bigl(Y_i - A_z\theta\bigr)\,\mathrm{d}\mu(z) = 0.
+\]
+En développant et en isolant $\theta$, on obtient le système linéaire
+\begin{equation}
+    M^{(k)}\,\theta^{(k+1)} = b^{(k)},
+    \label{eq:mstep}
+\end{equation}
+avec
+\begin{align}
+    M^{(k)}
+    &= \sum_{i=1}^{n} \int_\Zcal w_{i,z}\!\left(\theta^{(k)}\right) A_z^\top A_z\,\mathrm{d}\mu(z)
+    \;\in\; \R^{d \times d}, \label{eq:Mk} \\
+    b^{(k)}
+    &= \sum_{i=1}^{n} \int_\Zcal w_{i,z}\!\left(\theta^{(k)}\right) A_z^\top Y_i\,\mathrm{d}\mu(z)
+    \;\in\; \R^d. \label{eq:bk}
+\end{align}
+La matrice $M^{(k)}$ est symétrique définie positive dès que les poids sont non dégénérés et $p \geq d$ ; le système~\eqref{eq:mstep} admet alors une unique solution.
+
+\paragraph{Application au Cas 1.}
+Dans le Cas~1 ($A_z = \Phi(z)$, $f_Z \equiv \frac{1}{2\pi}$), les intégrales sont approchées par quadrature de Riemann sur $n_z$ points :
+\[
+    M^{(k)} \approx \frac{1}{n_z}\sum_{i=1}^{n}\sum_{q=0}^{n_z-1}
+    w_{i,z_q}\!\left(\theta^{(k)}\right)\,\Phi(z_q)^\top\Phi(z_q),
+    \quad
+    b^{(k)} \approx \frac{1}{n_z}\sum_{i=1}^{n}\sum_{q=0}^{n_z-1}
+    w_{i,z_q}\!\left(\theta^{(k)}\right)\,\Phi(z_q)^\top Y_i.
+\]
+Le système~\eqref{eq:mstep} est de taille $d \times d$ (avec $d = 2N+1 \ll p$) ; sa résolution en $O(d^3)$ est négligeable devant le coût $O(n \cdot n_z \cdot pd)$ de l'étape~E.
+
+\subsubsection{Propriétés}
+
+\begin{proposition}[Monotonie, Dempster, Laird \& Rubin 1977]
+\label{prop:em_monotonie}
+L'algorithme EM est monotone : $\ell_n(\theta^{(k+1)}) \geq \ell_n(\theta^{(k)})$ pour tout $k \geq 0$.
+\end{proposition}
+
+\begin{proof}
+Soit $q$ une densité de probabilité arbitraire sur $\mathcal{Z}$ (par rapport à $\mu$), c’est‑à‑dire $\int_{\mathcal{Z}} q(z)\,d\mu(z)=1$. En multipliant l’intégrande par $q(z)/q(z)$ et en appliquant l’inégalité de Jensen (concavité de $\log$), on a
+\[
+\log p(Y;\theta) = \log \int_{\mathcal{Z}} \frac{p(Y,Z;\theta)}{q(Z)}\, q(Z)\,d\mu(Z)
+\ge \int_{\mathcal{Z}} q(Z) \log\frac{p(Y,Z;\theta)}{q(Z)}\,d\mu(Z).
+\]
+Choisissons $q(Z) = p(Z\mid Y;\theta^{(k)})$. L’inégalité devient
+\[
+\log p(Y;\theta) \ge \int p(Z\mid Y;\theta^{(k)}) \log p(Y,Z;\theta)\,d\mu(Z)
+- \int p(Z\mid Y;\theta^{(k)}) \log p(Z\mid Y;\theta^{(k)})\,d\mu(Z).
+\]
+Le second terme, noté $C(\theta^{(k)})$, ne dépend pas de $\theta$. Ainsi,
+\[
+\ell_n(\theta) \ge Q(\theta\mid\theta^{(k)}) + C(\theta^{(k)}).
+\]
+L’égalité a lieu pour $\theta = \theta^{(k)}$, car alors
+\[
+\frac{p(Y,Z;\theta^{(k)})}{p(Z\mid Y;\theta^{(k)})} = p(Y;\theta^{(k)})
+\]
+ne dépend pas de $Z$, condition qui rend l’inégalité de Jensen une égalité.
+
+Appliquons ce résultat à $\theta = \theta^{(k+1)}$ et $\theta = \theta^{(k)}$ :
+\[
+\ell_n(\theta^{(k+1)}) \ge Q(\theta^{(k+1)}\mid\theta^{(k)}) + C(\theta^{(k)}), \qquad
+\ell_n(\theta^{(k)}) = Q(\theta^{(k)}\mid\theta^{(k)}) + C(\theta^{(k)}).
+\]
+Par définition de l’étape M, $Q(\theta^{(k+1)}\mid\theta^{(k)}) \ge Q(\theta^{(k)}\mid\theta^{(k)})$. En soustrayant, on obtient
+\[
+\ell_n(\theta^{(k+1)}) - \ell_n(\theta^{(k)}) \ge Q(\theta^{(k+1)}\mid\theta^{(k)}) - Q(\theta^{(k)}\mid\theta^{(k)}) \ge 0.
+\]
+\end{proof}
+
+\begin{remark}
+La monotonie vaut même si l'étape~M est remplacée par une étape augmentant $Q$ sans le maximiser exactement (algorithme GEM, \emph{Generalized EM}).
+\end{remark}
+
+\begin{theorem}[Wu, 1983]
+\label{thm:wu}
+Sous des conditions de régularité sur $\ell_n$ (continuité de $\theta \mapsto Q(\theta \mid \theta')$ et compacité des sous-niveaux), toute valeur d'adhérence de la suite $(\theta^{(k)})$ est un point stationnaire de $\ell_n$, c'est-à-dire vérifie $\nabla_\theta\ell_n(\theta) = 0$.
+\end{theorem}
+
+\begin{remark}
+La preuve combine la monotonie (Proposition~\ref{prop:em_monotonie}) et la coercivité de $\ell_n$ (Section~\ref{subsec:proprietes_ll}), qui confinent la suite dans un compact et garantissent la convergence de $(\ell_n(\theta^{(k)}))$ ; la continuité de $\theta \mapsto Q(\theta \mid \theta')$ permet alors de montrer que toute valeur d'adhérence $\theta^*$ est un point fixe de l'itération, condition équivalente à $\nabla_\theta \ell_n(\theta^*) = 0$ d'après la décomposition $\ell_n(\theta) = Q(\theta \mid \theta^*) - R(\theta \mid \theta^*)$ différentiée en $\theta^*$.
+\end{remark}
 
 \subsection{Comparaison des deux approches}
 \label{subsec:comparaison}
-% - Complexité par itération : gradient vs EM
-% - Garanties de convergence : globale vs locale
-% - Sensibilité à l'initialisation
-% - Résultats numériques croisés : temps de calcul, valeur finale
+
+La \textbf{descente de gradient} est directe et polyvalente : la règle d'Armijo~\eqref{eq:armijo} garantit un accroissement de $\ell_n$ à chaque itération, mais l'algorithme est sensible au choix du pas initial $\eta_0$ et peut converger lentement vers un maximum local.
+
+L'\textbf{algorithme EM} est particulièrement adapté aux modèles à variables cachées : la monotonie est garantie par la Proposition~\ref{prop:em_monotonie}, et l'étape~M se réduit à un système linéaire de taille $d \times d$, dont le coût $O(d^3)$ est négligeable devant l'étape~E. La convergence est linéaire près d'un optimum, mais l'algorithme est numériquement robuste et ses valeurs d'adhérence sont toutes des points stationnaires (Théorème~\ref{thm:wu}).
+
+Les deux algorithmes partagent la même structure : une étape de calcul des poids~\eqref{eq:poids_aposteriori} de coût $O(n \cdot n_z \cdot pd)$, suivie d'une mise à jour de $\theta$. L'étude numérique de leurs performances sur le Cas~1 est conduite en Section~\ref{sec:analyse_erreur}.
+
+
 
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -670,24 +1160,399 @@ cachées, analysé en Section~\ref{sec:analyse_erreur}.
 
 \subsection{Retour au cas général avec variables cachées}
 \label{subsec:avec_variables_cachees}
-% - Contraste avec la Section 2 : on ne dispose plus d'un estimateur explicite
-% - Pourquoi la norme standard || theta_hat - theta || est inadaptée (reprendre Section 3.3)
-% - Reformulation de epsilon_n^2(sigma) avec la métrique invariante par translation
-% - Dans le Cas 1 : simplification avec inf_{a in [0,2pi]} || tau_a theta_hat - vartheta ||^2
+
+\paragraph{Contraste avec le cas de référence.}
+Dans la Section~\ref{sec:sans_cachees}, le modèle simplifié $Y_i = A\theta + \sigma E_i$ (sans
+variables cachées) admettait un estimateur explicite~\eqref{eq:estimateur_simple},
+\[
+    \hat{\theta}_n = \bigl(A^\top A\bigr)^{-1}A^\top\bar{Y}_n,
+\]
+et l'erreur quadratique se calculait exactement (Section~\ref{subsec:erreur_simple}) :
+\[
+    \varepsilon_n^2(\sigma) = \frac{\sigma^2}{n}\Tr\!\bigl((A^\top A)^{-1}\bigr).
+\]
+Dans le modèle général~\eqref{eq:modele} avec variables cachées, la log-vraisemblance
+marginale $\ell_n$ n'est plus quadratique (Section~\ref{sec:mle}), et $\hat\theta_n$
+est désormais la sortie d'un algorithme itératif --- EM ou descente de gradient
+(Section~\ref{sec:optimisation}) --- dont on ne peut pas écrire la forme close.
+Il n'existe donc pas d'analogue direct de la formule ci-dessus : l'erreur doit
+être étudiée numériquement.
+
+\paragraph{Inadaptation de la norme euclidienne dans le Cas 1.}
+Un second obstacle s'ajoute dans le Cas~1. La
+Proposition~\ref{prop:invariance_translation} (Section~\ref{subsec:identifiabilite})
+établit que $\ell_n$ est invariante par translation : si $\hat\theta_n$ est un
+maximiseur de $\ell_n$, alors $\tau_a\hat\theta_n$ l'est aussi pour tout
+$a \in [0, 2\pi[$. Le paramètre n'est donc identifiable qu'à une translation
+près, et la norme euclidienne $\norm{\hat\theta_n - \theta}$ n'est pas une
+mesure d'erreur adaptée : même un estimateur parfait à translation près peut
+produire un grand résidu si le décalage résiduel n'est pas corrigé.
+
+\paragraph{Mesure d'erreur adaptée et approximation empirique.}
+On utilise la quantité invariante par translation définie en~\eqref{eq:erreur_quotient} :
+\[
+    \varepsilon_n(\sigma)
+    = \left(\E\!\left[\inf_{a \in [0,2\pi[}
+      \norm{\tau_a\hat\theta_n - \theta}^2\right]\right)^{1/2}.
+\]
+Deux approximations rendent ce calcul numérique accessible.
+
+\textit{Infimum sur $a$.}
+Pour un estimateur $\hat\theta_n$ donné, le décalage optimal
+$a^* = \argmin_{a}\norm{\tau_a\hat\theta_n - \theta}^2$ est approché par
+corrélation croisée via FFT : $a^*$ est la position du maximum de
+$a \mapsto \langle\tau_a\hat\theta_n,\,\theta\rangle$, calculé en $O(p\log p)$
+par transformée de Fourier rapide (fonction \texttt{translation\_error} dans
+le notebook).
+
+\textit{Espérance sur les données.}
+L'espérance porte sur les $n$ observations $(Y_1, \ldots, Y_n)$ et les $n$
+translations cachées $(Z_1, \ldots, Z_n)$ qui les ont générées. Elle est
+approchée par une moyenne de Monte-Carlo sur $M$ répétitions indépendantes
+de l'expérience : pour chaque répétition $m$, on tire des translations et
+des bruits indépendants, on calcule l'estimateur $\hat\theta_n^{(m)}$ par
+l'algorithme retenu, puis on mesure l'erreur invariante par translation.
+La moyenne empirique
+\begin{equation}
+    \widehat\varepsilon_n(\sigma)
+    = \left(\frac{1}{M}\sum_{m=1}^{M}
+      \inf_{a \in [0,2\pi[}\norm{\tau_a\hat\theta_n^{(m)} - \theta}^2
+      \right)^{1/2}
+    \label{eq:erreur_empirique}
+\end{equation}
+est l'estimateur de $\varepsilon_n(\sigma)$ tracé en
+Section~\ref{subsec:etude_numerique_erreur}.
 
 \subsection{Étude numérique de \texorpdfstring{$\varepsilon_n(\sigma)$}{epsilon_n(sigma)}}
 \label{subsec:etude_numerique_erreur}
-% - Courbes epsilon_n en fonction de n pour différents sigma (Cas 1)
-% - Courbes epsilon_n en fonction de sigma pour différents n
-% - Impact de d et p : discussion
+
+\paragraph{Protocole.}
+Les expériences sont conduites dans le Cas~1 avec les paramètres suivants : $p = 32$
+points de grille, $N = 3$ fréquences ($d = 7$), $n_z = 64$ points de quadrature pour
+l'intégrale sur $z$, et $M = 15$ répétitions Monte-Carlo par point de mesure.
+L'algorithme EM est lancé avec $20$ initialisations aléatoires (amplitude $0{,}5$)
+par répétition ; on retient la solution de meilleure log-vraisemblance finale.
+L'erreur estimée $\widehat\varepsilon_n(\sigma)$ est calculée via~\eqref{eq:erreur_empirique}.
+La courbe de référence tracée en tirets est celle de la Section~\ref{sec:cas_reference} :
+\[
+  \varepsilon_n^{\mathrm{ref}}(\sigma)
+  = \frac{\sigma}{\sqrt{n}}\sqrt{\mathrm{Tr}\bigl[(A^TA)^{-1}\bigr]},
+  \quad
+  \mathrm{Tr}\bigl[(\Phi(0)^T\Phi(0))^{-1}\bigr] \approx 0{,}41,
+\]
+qui correspond au cas où les translations $Z_i$ sont connues (oracle).
+
+% ── Figure 1 ──────────────────────────────────────────────────────────────────
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{figures/erreur_vs_n.pdf}
+  \caption{Erreur $\widehat\varepsilon_n(\sigma)$ en fonction du nombre
+    d'observations $n$ (échelles log-log) pour quatre valeurs de $\sigma$.
+    Trait plein : EM multi-départ. Tirets de même couleur : référence oracle
+    de la Section~\ref{subsec:erreur_simple}.}
+  \label{fig:erreur_vs_n}
+\end{figure}
+
+\paragraph{Plateau algorithmique et goulot d'étranglement.}
+La figure~\ref{fig:erreur_vs_n} révèle le phénomène central de cette étude.
+Pour $\sigma \in \{0{,}3, 0{,}5, 1{,}0\}$, l'erreur EM se stabilise autour
+de $0{,}10$–$0{,}13$ dès $n \approx 50$ et ne décroît plus lorsque $n$ augmente,
+alors que la courbe de référence oracle continue de suivre la pente $n^{-1/2}$.
+Ce décalage croissant — d'un facteur $1{,}5$ à $n = 10$ jusqu'à $4$–$5$
+à $n = 200$ — ne provient pas d'une insuffisance statistique du modèle : plus
+de données n'améliore pas l'estimation parce que l'algorithme EM converge vers
+un optimum local de la log-vraisemblance marginale, elle-même non concave.
+Le goulot d'étranglement est donc \emph{algorithmique} plutôt que statistique.
+
+\paragraph{Anomalie à faible bruit ($\sigma = 0{,}1$).}
+Dès $\sigma = 0{,}1$, l'erreur EM est nettement plus élevée
+($\widehat\varepsilon_n \approx 0{,}27$–$0{,}37$) et ne suit plus
+la décroissance attendue. L'explication réside dans la structure des poids
+a posteriori~\eqref{eq:estep} : à faible $\sigma$, le terme
+$\exp(-\|Y_i - \Phi(z)u\|^2/2\sigma^2)$ est extrêmement piqué,
+si bien que les poids $w_{i,z}(u^{(k)})$ se concentrent quasi
+intégralement sur un seul point de quadrature pour chaque $i$.
+L'entropie de Shannon de la distribution a posteriori,
+$H_i = -\sum_q w_{i,z_q}\log w_{i,z_q}$,
+vaut alors $H \approx 0{,}007$ (valeur maximale possible : $\log n_z \approx 4{,}16$).
+L'E-step voit essentiellement un unique candidat pour chaque translation,
+et le M-step qui en résulte devient très sensible aux optima locaux :
+l'EM reste piégé dans un attracteur qui n'est pas le maximum global.
+Pour $\sigma = 0{,}05$ le phénomène est encore plus sévère et l'estimation
+échoue complètement ($\widehat\varepsilon_n \approx 0{,}97$).
+
+\paragraph{Exception aux grands $\sigma$ et petits $n$.}
+Pour $n = 10$ et $\sigma = 1{,}0$, l'erreur EM ($\approx 0{,}17$) est
+\emph{inférieure} à la référence oracle ($\approx 0{,}20$).
+Cela n'est pas paradoxal : la borne de référence est construite pour
+$A_z = A$ constant (translations connues), et surestime donc le risque réel
+lorsque le nombre d'observations est si petit que l'estimation pâtit davantage
+de la variance que du biais lié aux translations cachées.
+
+% ── Figure 2 ──────────────────────────────────────────────────────────────────
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{figures/erreur_vs_sigma.pdf}
+  \caption{Erreur $\widehat\varepsilon_n(\sigma)$ en fonction du niveau de bruit
+    $\sigma$ pour quatre valeurs de $n$ fixées.
+    On observe une courbe en forme de U : l'erreur est élevée aux deux
+    extrêmes et minimale pour $\sigma \in [0{,}2, 0{,}5]$.}
+  \label{fig:erreur_vs_sigma}
+\end{figure}
+
+\paragraph{Comportement en fonction de $\sigma$ : courbe en U.}
+La figure~\ref{fig:erreur_vs_sigma} révèle trois régimes distincts selon $\sigma$.
+
+\begin{itemize}
+  \item \textit{Faible bruit ($\sigma \lesssim 0{,}1$) — poids concentrés.}
+    Les poids a posteriori sont quasi-Diracs ; l'EM est piégé dans des optima
+    locaux et l'erreur est élevée. L'entropie $H \approx 0{,}007$ confirme que
+    l'algorithme n'explore pas l'espace des translations.
+
+  \item \textit{Bruit modéré ($\sigma \in [0{,}2, 0{,}5]$) — régime optimal.}
+    L'erreur atteint son minimum. Les poids sont suffisamment diffus pour que
+    le landscape de la log-vraisemblance présente un bassin d'attraction large
+    autour du vrai paramètre (entropie $H \approx 0{,}57$ pour $\sigma = 0{,}5$),
+    tout en restant assez informatifs pour guider l'optimisation.
+
+  \item \textit{Grand bruit ($\sigma \gtrsim 1{,}0$) — poids uniformes.}
+    Les poids tendent vers l'uniforme ($H \approx 1{,}28$ pour $\sigma = 1{,}0$ ;
+    $H \approx 2{,}18$ pour $\sigma = 2{,}0$) : les observations ne permettent
+    plus de discriminer les translations. L'erreur remonte avec $\sigma$,
+    et c'est dans ce régime que $n$ commence à nouveau à jouer un rôle visible :
+    les courbes pour $n \in \{50, 100, 200\}$ se séparent nettement,
+    suggérant un retour partiel vers la décroissance $n^{-1/2}$.
+\end{itemize}
 
 % ════════════════════════════════════════════════════════════════════════════
 \newpage
 \section{Régularisation pour les problèmes inverses mal posés}
-\label{subsec:régularisation}
-% 
+\label{sec:regularisation}
 
+Dans le modèle étudié, l’estimation de $\theta$ repose sur l’inversion de matrices de la forme
+\[
+M^{(k)}
+=
+\sum_{i=1}^n \int_{\Zcal} w_{i,z}(\theta^{(k)})\, A_z^\top A_z \,\mathrm{d}\mu(z),
+\]
+apparaissant dans l’étape M de l’algorithme EM (cf.~\eqref{eq:Mk}).
 
+Dans le Cas~1 (translations sur le tore), les opérateurs $A_z$ conservent globalement
+l’information du signal, et la diagonalisation de Fourier permet une inversion
+relativement stable.
+
+En revanche, dans le Cas~2, les opérateurs
+\[
+A_z = P \circ R_z
+\]
+sont des compositions de rotations et de projections. L’opérateur de projection
+\[
+P : L^2(B(0,1)) \to L^2([-1,1])
+\]
+réduit la dimension des données observées et entraîne une perte d’information intrinsèque.
+
+Certaines composantes de $\theta$ influencent alors très faiblement les observations,
+ce qui rend le problème inverse mal posé. En particulier, la matrice $M^{(k)}$ possède
+souvent de très petites valeurs propres, et son inversion amplifie fortement le bruit
+présent dans les données. Cette instabilité peut provoquer une forte sensibilité au
+bruit, des oscillations numériques, voire une mauvaise convergence de l’algorithme EM.
+Pour stabiliser le problème, on introduit une régularisation.
+
+\subsection{Vraisemblance pénalisée}
+\label{subsec:vrai_penalisee}
+
+On remplace la log-vraisemblance marginale par une version pénalisée :
+\[
+\ell_n^{\mathrm{reg}}(\theta)
+=
+\ell_n(\theta) - \lambda R(\theta),
+\]
+où $\lambda > 0$ est un paramètre de régularisation et $R(\theta)$ est un terme de
+pénalité favorisant des solutions plus régulières.
+
+Dans le cadre de l’algorithme EM, la M-step devient
+\[
+\theta^{(k+1)}
+=
+\argmax_{\theta \in E}
+\,Q(\theta \mid \theta^{(k)}) - \lambda R(\theta).
+\]
+
+Pour la descente de gradient pénalisée, la modification est immédiate : par linéarité
+de la différentiation,
+\begin{equation}
+  \label{eq:grad_reg}
+  \nabla_\theta \ell_n^{\mathrm{reg}}(\theta) = \nabla_\theta \ell_n(\theta) - \lambda\theta,
+\end{equation}
+et l’itération d’Armijo (cf.~Section~\ref{subsec:gradient}) s’applique telle quelle
+au gradient modifié~\eqref{eq:grad_reg}.
+
+\subsection{Régularisation de Tikhonov}
+\label{subsec:tikhonov}
+
+Le choix le plus simple consiste à prendre $R(\theta) = \tfrac{1}{2}\|\theta\|^2$.
+Cette pénalité quadratique correspond à la régularisation de Tikhonov (ou ridge).
+
+La M-step régularisée revient à minimiser
+\[
+\frac{1}{2\sigma^2}
+\sum_{i=1}^n \int_{\Zcal}
+w_{i,z}(\theta^{(k)})
+\|Y_i - A_z\theta\|^2
+\,\mathrm{d}\mu(z)
++
+\frac{\lambda}{2}\|\theta\|^2.
+\]
+
+En annulant le gradient, on obtient les équations normales régularisées :
+\[
+\left(
+\sum_{i=1}^n \int_{\Zcal}
+w_{i,z}(\theta^{(k)})\,
+A_z^\top A_z
+\,\mathrm{d}\mu(z)
++
+\lambda\sigma^2 I
+\right)\theta
+=
+\sum_{i=1}^n \int_{\Zcal}
+w_{i,z}(\theta^{(k)})\,
+A_z^\top Y_i
+\,\mathrm{d}\mu(z).
+\]
+
+La mise à jour EM régularisée est donc
+\begin{equation}
+\label{eq:mstep_reg}
+\theta^{(k+1)}
+=
+\left(
+\sum_{i=1}^n \int_{\Zcal}
+w_{i,z}(\theta^{(k)})\,
+A_z^\top A_z
+\,\mathrm{d}\mu(z)
++
+\lambda\sigma^2 I
+\right)^{\!-1}
+\left(
+\sum_{i=1}^n \int_{\Zcal}
+w_{i,z}(\theta^{(k)})\,
+A_z^\top Y_i
+\,\mathrm{d}\mu(z)
+\right).
+\end{equation}
+
+L’ajout du terme $\lambda\sigma^2 I$ améliore le conditionnement de la matrice à
+inverser et réduit l’amplification du bruit.
+
+\begin{remark}[Interprétation bayésienne]
+La pénalité $\tfrac{\lambda}{2}\|\theta\|^2$ est le log-prior d’une loi gaussienne
+sphérique $\theta \sim \Ncal\!\left(0,\,\tfrac{\sigma^2}{\lambda}\Id\right)$.
+Maximiser $\ell_n^{\mathrm{reg}}(\theta)$ revient donc à calculer l’estimateur MAP
+(\textit{maximum a posteriori}) associé à ce prior : la régularisation de Tikhonov
+est la traduction fréquentiste d’une information a priori sur l’amplitude de $\theta$.
+\end{remark}
+
+\subsection{Pénalités non quadratiques : $\ell^1$ et variation totale}
+\label{subsec:penalites_nonquad}
+
+La pénalité de Tikhonov est optimale lorsque $\theta$ est supposé de faible amplitude
+sans structure particulière. D'autres choix de $R$ répondent à des contraintes
+différentes sur la solution.
+
+\paragraph{Pénalité $\ell^1$ (Lasso).}
+On prend
+\[
+  R(\theta) = \|\theta\|_1 = \sum_{j=1}^d |\theta_j|.
+\]
+Contrairement à la pénalité quadratique, la norme $\ell^1$ est non différentiable en
+zéro et induit de la \emph{parcimonie} : pour $\lambda$ assez grand, certaines
+composantes de $\hat\theta(\lambda)$ sont exactement nulles. Elle est donc appropriée
+lorsque le signal $\theta$ est supposé creux dans la base choisie.
+
+La M-step régularisée $\ell^1$ n'admet plus de forme close, car le problème
+\[
+  \argmin_{\theta \in E}\;
+  \frac{1}{2\sigma^2}
+  \sum_{i=1}^n \int_{\Zcal}
+  w_{i,z}(\theta^{(k)})\|Y_i - A_z\theta\|^2
+  \,\mathrm{d}\mu(z)
+  +
+  \lambda\|\theta\|_1
+\]
+est un problème d'optimisation convexe non lisse. On le résout par
+\emph{descente proximale} : l'opérateur proximal de $\lambda\|\cdot\|_1$
+est le seuillage doux composante par composante,
+\[
+  \mathrm{prox}_{\lambda\|\cdot\|_1}(\theta)_j
+  = \mathrm{sign}(\theta_j)\,\max(|\theta_j| - \lambda,\,0),
+\]
+ce qui conduit à un algorithme ISTA/FISTA pour la M-step.
+
+\paragraph{Variation totale.}
+Lorsque $\theta$ représente un signal échantillonné sur une grille de $p$ points,
+on peut pénaliser les variations entre points consécutifs :
+\[
+  R(\theta) = \mathrm{TV}(\theta)
+  = \sum_{j=1}^{p-1} |\theta_{j+1} - \theta_j|.
+\]
+La variation totale préserve les discontinuités du signal (bords nets) tout en
+lissant les zones homogènes, ce qui la rend pertinente pour la reconstruction
+d'images en Cas~2. Comme $\ell^1$, elle est non lisse et nécessite un algorithme
+proximal (ou dual).
+
+\paragraph{Résumé comparatif.}
+\begin{itemize}
+  \item \textit{Tikhonov ($\ell^2$)} : forme close pour le M-step, stable
+    numériquement, favorise les solutions de petite norme mais denses.
+  \item \textit{Lasso ($\ell^1$)} : favorise la parcimonie, M-step résolue par
+    seuillage doux (ISTA/FISTA), adapté quand $\theta$ est creux dans la base.
+  \item \textit{Variation totale} : préserve les discontinuités, pertinente pour les
+    images ou signaux par morceaux, M-step résolue par algorithme proximal ou dual.
+\end{itemize}
+
+\subsection{Interprétation spectrale}
+\label{subsec:interp_spectrale}
+
+Soient $\mu_1 \geq \mu_2 \geq \cdots \geq \mu_d > 0$ les valeurs propres de
+\[
+M^{(k)}
+=
+\sum_{i=1}^n \int_{\Zcal} w_{i,z}(\theta^{(k)})\, A_z^\top A_z \,\mathrm{d}\mu(z).
+\]
+Lorsque certaines valeurs propres sont très petites, les directions correspondantes
+de l’espace des paramètres sont très peu observées par les données : l’inversion de
+$M^{(k)}$ amplifie fortement le bruit dans ces directions.
+
+La régularisation remplace chaque $\mu_j$ par $\mu_j + \lambda\sigma^2$,
+ce qui évite les divisions par de très petites quantités et stabilise l’inversion.
+Cette substitution réduit la variance de l’estimateur au prix d’un biais supplémentaire :
+c’est le compromis classique biais-variance des problèmes inverses statistiques.
+
+\subsection{Choix du paramètre \texorpdfstring{$\lambda$}{lambda}}
+\label{subsec:choix_lambda}
+
+Le choix de $\lambda$ est crucial : une valeur trop petite ne régularise pas
+suffisamment, une valeur trop grande introduit un biais excessif. Les approches
+standard pour le calibrer sont les suivantes.
+
+\begin{itemize}
+  \item \textit{Validation croisée ($k$-fold).} On partage les $n$ observations en
+    $k$ plis, on estime $\theta(\lambda)$ sur $k-1$ plis pour plusieurs valeurs de
+    $\lambda$, et on retient le $\lambda$ minimisant l'erreur de prédiction sur le
+    pli laissé de côté.
+  \item \textit{Courbe en L.} On trace $(\log\|Y - A\hat\theta(\lambda)\|,\,
+    \log\|\hat\theta(\lambda)\|)$ en faisant varier $\lambda$ ; la courbe présente
+    typiquement un coude en forme de L dont le sommet indique un bon compromis
+    biais-variance.
+  \item \textit{Validation croisée généralisée (GCV).} Critère analytique ne
+    nécessitant pas de partition des données, particulièrement adapté aux modèles
+    linéaires régularisés où la matrice chapeau est explicite.
+\end{itemize}
+
+En pratique, la validation croisée est la méthode la plus robuste dans notre cadre,
+où le modèle à variables cachées complique l'évaluation de la vraisemblance pénalisée
+pour chaque valeur candidate de $\lambda$.
 
 
 % ════════════════════════════════════════════════════════════════════════════
@@ -701,14 +1566,6 @@ cachées, analysé en Section~\ref{sec:analyse_erreur}.
 % - Adaptation des algorithmes (gradient, EM) au Cas 2
 % - Résultats numériques : reconstruction d'une image 2D
 % - Comparaison avec le Cas 1
-
-\subsection{Régularisation}
-\label{subsec:regularisation}
-% - Motivation : problème mal posé, connaissance a priori sur theta
-% - Ajout d'un terme R(theta) dans la vraisemblance pénalisée
-% - Exemples de régulariseurs : Tikhonov (||theta||^2), variation totale, L^1
-% - Adaptation des algorithmes : gradient proximal, ADMM
-% - Résultats numériques
 
 
 % ════════════════════════════════════════════════════════════════════════════
