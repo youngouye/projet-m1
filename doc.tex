@@ -1,22 +1,22 @@
 \documentclass[12pt, a4paper]{article}
 
-% ── Encodage et langue ──────────────────────────────────────────────────────
+% ── Encodage et langue 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 
-% ── Mise en page ────────────────────────────────────────────────────────────
+% ── Mise en page 
 \usepackage[top=2.5cm, bottom=2.5cm, left=2.8cm, right=2.8cm]{geometry}
 \usepackage{setspace}
 \onehalfspacing
 
-% ── Mathématiques ───────────────────────────────────────────────────────────
+% ── Mathématiques 
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{mathtools}
-\usepackage{bbm}          % \mathbbm{1}
-\usepackage{dsfont}       % \mathds{1}
+\usepackage{bbm}       
+\usepackage{dsfont}       
 
-% ── Théorèmes ───────────────────────────────────────────────────────────────
+% ── Théorèmes
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemme}
@@ -26,25 +26,25 @@
 \newtheorem{example}[theorem]{Exemple}
 \newtheorem{remark}[theorem]{Remarque}
 
-% ── Algorithmes ─────────────────────────────────────────────────────────────
+% ── Algorithmes
 \usepackage[ruled, vlined, french]{algorithm2e}
 
-% ── Figures et tableaux ─────────────────────────────────────────────────────
+% ── Figures et tableaux
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{caption}
 
-% ── Couleurs et hyperliens ──────────────────────────────────────────────────
+% ── Couleurs et hyperliens
 \usepackage{xcolor}
 \usepackage[colorlinks=true, linkcolor=blue!70!black,
             citecolor=blue!70!black, urlcolor=blue!70!black]{hyperref}
 
-% ── Bibliographie ───────────────────────────────────────────────────────────
+% ── Bibliographie
 \usepackage[numbers, sort&compress]{natbib}
 
-% ── Raccourcis mathématiques ────────────────────────────────────────────────
+% ── Raccourcis 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\E}{\mathbb{E}}
@@ -60,13 +60,13 @@
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
 
-% —— Figures —————————————————————————————————————————————————————————————————
+% —— Figures 
 \graphicspath{{figures/}}
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \begin{document}
 
-% ── Page de titre ───────────────────────────────────────────────────────────
+% ── Page de titre 
 \begin{titlepage}
     \begin{center}
 
@@ -92,33 +92,25 @@
     \end{center}
 \end{titlepage}
 
-% ── Remerciements ───────────────────────────────────────────────────────────
+% ── Remerciements 
 \newpage
 \begin{center}
     {\Large Remerciements}
 \end{center}
 \vspace{0.5em}
 \noindent\rule{\textwidth}{1pt}
-\vspace{1em}
 
-% TODO : rédiger les remerciements
-
-\vspace{1em}
+\vspace{0.5em}
+Nous tenons à remercier chaleureusement Camille Pouchol pour son encadrement tout au long de ce projet. Ses conseils avisés, sa disponibilité et la clarté avec laquelle il a su orienter nos réflexions nous ont été d'une aide précieuse, aussi bien dans la compréhension des aspects théoriques que dans la mise en œuvre numérique.
+Nous remercions également le Master MMAS de l'Université Paris Cité pour la qualité de la formation reçue, qui nous a fourni les outils mathématiques nécessaires à l'étude de ce problème.
+\vspace{1.2em}
 \noindent\rule{\textwidth}{1pt}
 
-% ── Résumé ──────────────────────────────────────────────────────────────────
-\newpage
-\begin{abstract}
-% TODO : rédiger le résumé (environ 15 lignes)
-% Présenter brièvement : le modèle (M), les deux cas d'application,
-% les méthodes étudiées (MV directe, EM), l'analyse de l'erreur.
-\end{abstract}
-
-% ── Table des matières ──────────────────────────────────────────────────────
+% ── Table des matières 
 \newpage
 \tableofcontents
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
@@ -142,6 +134,17 @@ $n$ images, chacune étant la projection d'une molécule ayant subi une rotation
 inconnue dans $SO(3)$, et fortement perturbée par le bruit de mesure inhérent à la
 technique. La question est alors : comment reconstruire la structure 3D originale
 à partir de ces projections bruitées dont les orientations sont toutes ignorées ?
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{cryo-Singer}
+  \caption{Principe de la cryo-EM : des copies identiques de la molécule,
+    orientées aléatoirement, produisent chacune une projection 2D bruitée.
+    Le problème inverse consiste à reconstruire la structure 3D $\theta$
+    à partir de ces images dont les orientations $Z_i \in SO(3)$ sont inconnues.
+    Figure extraite de \cite{singer2011three}.}
+  \label{fig:cryo_em}
+\end{figure}
 
 Ce problème appartient à la classe des \textit{problèmes inverses linéaires avec
 variables cachées}. Dans la modélisation mathématique, la structure moléculaire
@@ -212,10 +215,6 @@ avant observation, mais elles ne sont pas accessibles à l'observateur.
 Chaque $Y_i$ est donc une version transformée et bruitée de $\theta$, dont
 la transformation elle-même est inconnue. C'est cette double incertitude,
 sur $\theta$ et sur les $Z_i$,  qui constitue la difficulté centrale du problème.
-% - Espace de Hilbert E, espace mesuré (Z, F, mu)
-% - Opérateurs A_z in L(E, R^p)
-% - Présentation du modèle (M) : Y_i = A_{Z_i} theta + sigma E_i
-% - Hypothèses : Z_i i.i.d. de densité f_Z, E_i ~ N(0, Id_p), indépendance
 
 \subsection{Cas d'application}
 \label{subsec:cas_application}
@@ -298,7 +297,7 @@ sans connaître les décalages $Z_1, \ldots, Z_n$.
 Ce cas constitue l'analogue unidimensionnel du problème de reconstruction
 moléculaire décrit en introduction. Le signal $\theta$ joue le rôle de la structure
 à reconstruire, la translation aléatoire $Z_i$ simule l'orientation inconnue de la
-molécule, et la projection sur la grille correspond à l'acquisition d'une image
+molécule, et la projection sur la grille correspond à l'observation d'une image
 discrétisée. Sa relative simplicité analytique, notamment la diagonalisation
 de $A_z$ dans la base de Fourier, en fait le terrain naturel pour développer
 et valider les méthodes d'estimation étudiées dans ce rapport.
@@ -344,13 +343,14 @@ intégration selon l'axe $y$ :
     (P\theta)(x) = \int_{\R} \theta(x, y)\,\mathrm{d}y, \qquad x \in [-1, 1].
 \]
 Cet opérateur est la \textit{transformée de Radon} de $\theta$ selon la direction
-verticale : il donne la somme (intégrale) de $\theta$ le long de chaque droite
+verticale : il donne l'intégrale de $\theta$ le long de chaque droite
 verticale $\{x\} \times \R$.
 
 \begin{remark}
     La transformée de Radon complète de $\theta$ consiste à calculer $P(R_z\theta)$
     pour tous les angles $z \in [0, \pi[$, ce qui correspond à projeter $\theta$ selon
-    toutes les directions du plan. Le théorème de la tranche de Fourier établit que la
+    toutes les directions du plan. Le théorème de la tranche de Fourier que l'on verra 
+    en Section~\ref{sec:extensions} établit que la
     transformée de Fourier 1D de $P(R_z\theta)$ en $x$ coïncide avec la transformée
     de Fourier 2D de $\theta$ restreinte à la droite de direction $z$. C'est le
     fondement théorique des algorithmes de rétroprojection filtrée utilisés en
@@ -397,9 +397,7 @@ aient été développées et validées sur le Cas 1.
 
 \subsection{Simulation des données et premières observations numériques}
 \label{subsec:simulation}
-% - Choix d'un sous-espace raisonnable de L^2(T), dimension d
-% - Génération des données du Cas 1 pour différents sigma, d, p
-% - Premières visualisations : impact du bruit, du nombre de mesures
+
 \paragraph{Génération d'une observation dans le Cas 1.}
 Pour simuler une observation $Y_i$, on fixe d'abord le vecteur $u \in \mathbb{R}^d$ des 
 coordonnées de $\theta$ dans la base trigonométrique réelle. 
@@ -425,10 +423,6 @@ et on observe $(Y_i)_j = \theta(x_j - Z_i) + (E_i)_j$.
 \newpage
 \section{Cas de référence : le modèle sans variables cachées}
 \label{sec:sans_cachees}
-% Objectif de cette section : résoudre complètement le problème simplifié A_z = A
-% pour tous les z. Tout est explicite ici — cela sert de référence et de motivation
-% pour mesurer la difficulté introduite par les variables cachées dans les sections suivantes.
-
 
 
 
@@ -506,16 +500,11 @@ on a simplement $\hat{\theta}_n = A^\dagger\bar{Y}_n$.
 
 \subsection{Convexité et résolution exacte}
 \label{subsec:convexite_simple}
-% - La log-vraisemblance négative est strictement convexe (car A^T A inversible)
-% - Solution explicite du problème d'optimisation : pas besoin d'algorithme itératif
-% - Interprétation géométrique : projection orthogonale sur Im(A)
+
 
 \subsection{Analyse de l'erreur d'estimation}
 \label{subsec:erreur_simple}
-% - Calcul de epsilon_n(sigma) = E[|| theta_hat_n - theta ||^2]^{1/2}
-% - Preuve : epsilon_n = (sigma / sqrt(n)) * sqrt(Tr((A^T A)^{-1}))
-% - Nombre minimal de données n pour avoir epsilon_n <= epsilon (epsilon > 0 donné)
-% - Discussion : rôle de sigma, de la dimension de E, de la structure de A
+
 
 \paragraph{Erreur quadratique.}
 Naturellement pour estimer la précision de notre estimateur des moindres
@@ -627,7 +616,7 @@ servira de référence pour évaluer le surcoût statistique dû aux variables
 cachées, analysé en Section~\ref{sec:analyse_erreur}.
 
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section{Formulation variationnelle et maximum de vraisemblance}
 \label{sec:mle}
@@ -813,7 +802,7 @@ et la formule~\eqref{eq:gradient_ll} s'obtient en sommant sur $i$.
 
 \begin{remark}
 Le gradient s'annule en $\theta^*$ si et seulement si $\theta^*$ satisfait
-l'équation de cohérence
+l'équation
 \[
     \left(\int_\Zcal\!\sum_{i=1}^n w_{i,z}(\theta^*)\, A_z^\top A_z\,\mathrm{d}\mu(z)\right)\theta^*
     = \int_\Zcal\!\sum_{i=1}^n w_{i,z}(\theta^*)\, A_z^\top Y_i\,\mathrm{d}\mu(z).
@@ -919,43 +908,28 @@ $[0, 2\pi[$ invariante (la mesure de Lebesgue est invariante par translation
 sur le tore), d'où $\ell_n(\tau_a\theta) = \ell_n(\theta)$.
 \end{proof}
 
-\paragraph{Inadaptation de la norme standard.}
+\paragraph{Inadaptation de la norme standard et métrique adaptée.}
 La Proposition~\ref{prop:invariance_translation} implique que si $\hat\theta_n$
 maximise $\ell_n$, alors $\tau_a\hat\theta_n$ le maximise aussi pour tout
-$a \in [0, 2\pi[$. Les données ne permettent donc d'estimer $\theta$ qu'à
-une translation près. Utiliser $\norm{\hat\theta_n - \theta}$ comme mesure
-d'erreur est alors inadapté : même un estimateur parfait «~à translation
-près~» peut donner une grande erreur si le décalage résiduel n'est pas
-corrigé.
-
-\begin{definition}[Orbite et distance quotient]
-L'\emph{orbite} de $\theta$ sous le groupe des translations est
-\[
-    [\theta] = \bigl\{\tau_a\theta : a \in [0, 2\pi[\bigr\}.
-\]
-La \emph{distance quotient} entre $[\hat\theta_n]$ et $[\theta]$ est
-\[
-    d\bigl([\hat\theta_n],\, [\theta]\bigr)
-    = \inf_{a \in [0, 2\pi[} \norm{\tau_a\hat\theta_n - \theta}.
-\]
-\end{definition}
-
-\paragraph{Erreur quadratique invariante.}
-On définit l'erreur quadratique adaptée au problème d'identifiabilité :
+$a \in [0, 2\pi[$. Le paramètre $\theta$ n'est donc identifiable qu'à une
+translation près : utiliser $\norm{\hat\theta_n - \theta}$ comme mesure
+d'erreur est inadapté, car même un estimateur parfait à translation près
+peut produire un grand résidu si le décalage n'est pas corrigé.
+On lui substitue la quantité invariante par translation
 \begin{equation}
     \varepsilon_n^2(\sigma)
-    = \E\!\left[\inf_{a \in [0, 2\pi[} \norm{\tau_a\hat\theta_n - \theta}^2\right].
+    = \E\!\left[\inf_{a \in [0, 2\pi[} \norm{\tau_a\hat\theta_n - \theta}^2\right],
     \label{eq:erreur_quotient}
 \end{equation}
-Cette quantité est invariante par toute transformation $\theta \mapsto \tau_a\theta$,
-nulle si et seulement si $\hat\theta_n \in [\theta]$ presque sûrement, et bien
-définie car l'infimum est atteint (l'application $a \mapsto \norm{\tau_a\hat\theta_n - \theta}^2$
-est continue sur le compact $[0, 2\pi[$).
+nulle si et seulement si $\hat\theta_n$ coïncide avec $\theta$ à une translation
+près presque sûrement, et bien définie car l'infimum est atteint
+(l'application $a \mapsto \norm{\tau_a\hat\theta_n - \theta}^2$ est continue
+sur le compact $[0, 2\pi[$).
 C'est~\eqref{eq:erreur_quotient} qui sera étudiée numériquement en
 Section~\ref{sec:analyse_erreur}.
 
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 
 
@@ -1153,7 +1127,7 @@ Les deux algorithmes partagent la même structure : une étape de calcul des poi
 
 
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section{Analyse de la qualité de l'estimation}
 \label{sec:analyse_erreur}
@@ -1243,7 +1217,7 @@ La courbe de référence tracée en tirets est celle de la Section~\ref{sec:sans
 \]
 qui correspond au cas où les translations $Z_i$ sont connues (oracle).
 
-% ── Figure 1 ──────────────────────────────────────────────────────────────────
+% ── Figure 1 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{figures/erreur_vs_n.pdf}
@@ -1257,7 +1231,7 @@ qui correspond au cas où les translations $Z_i$ sont connues (oracle).
 \paragraph{Plateau algorithmique et goulot d'étranglement.}
 La figure~\ref{fig:erreur_vs_n} révèle le phénomène central de cette étude.
 Pour $\sigma \in \{0{,}3, 0{,}5, 1{,}0\}$, l'erreur EM se stabilise autour
-de $0{,}10$–$0{,}13$ dès $n \approx 50$ et ne décroît plus lorsque $n$ augmente,
+de $0{,}10$-$0{,}13$ dès $n \approx 50$ et ne décroît plus lorsque $n$ augmente,
 alors que la courbe de référence oracle continue de suivre la pente $n^{-1/2}$.
 Ce décalage croissant d'un facteur $1{,}5$ à $n = 10$ jusqu'à $4$,$5$
 à $n = 200$, ne provient pas d'une insuffisance statistique du modèle : plus
@@ -1267,7 +1241,7 @@ Le goulot d'étranglement est donc \emph{algorithmique} plutôt que statistique.
 
 \paragraph{Anomalie à faible bruit ($\sigma = 0{,}1$).}
 Dès $\sigma = 0{,}1$, l'erreur EM est nettement plus élevée
-($\widehat\varepsilon_n \approx 0{,}27$–$0{,}37$) et ne suit plus
+($\widehat\varepsilon_n \approx 0{,}27$-$0{,}37$) et ne suit plus
 la décroissance attendue. L'explication réside dans la structure des poids
 a posteriori~\eqref{eq:estep} : à faible $\sigma$, le terme
 $\exp(-\|Y_i - \Phi(z)u\|^2/2\sigma^2)$ est extrêmement piqué,
@@ -1290,7 +1264,7 @@ $A_z = A$ constant (translations connues), et surestime donc le risque réel
 lorsque le nombre d'observations est si petit que l'estimation pâtit davantage
 de la variance que du biais lié aux translations cachées.
 
-% ── Figure 2 ──────────────────────────────────────────────────────────────────
+% ── Figure 2
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.78\textwidth]{figures/erreur_vs_sigma.pdf}
@@ -1325,7 +1299,7 @@ La figure~\ref{fig:erreur_vs_sigma} révèle trois régimes distincts selon $\si
     suggérant un retour partiel vers la décroissance $n^{-1/2}$.
 \end{itemize}
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section{Régularisation pour les problèmes inverses mal posés}
 \label{sec:regularisation}
@@ -1405,7 +1379,7 @@ w_{i,z}(\theta^{(k)})
 \frac{\lambda}{2}\|\theta\|^2.
 \]
 
-En annulant le gradient, on obtient les équations normales régularisées :
+En annulant le gradient, on obtient les équations régularisées :
 \[
 \left(
 \sum_{i=1}^n \int_{\Zcal}
@@ -1446,14 +1420,6 @@ A_z^\top Y_i
 L’ajout du terme $\lambda\sigma^2 I$ améliore le conditionnement de la matrice à
 inverser et réduit l’amplification du bruit.
 
-\begin{remark}[Interprétation bayésienne]
-La pénalité $\tfrac{\lambda}{2}\|\theta\|^2$ est le log-prior d’une loi gaussienne
-sphérique $\theta \sim \Ncal\!\left(0,\,\tfrac{\sigma^2}{\lambda}\Id\right)$.
-Maximiser $\ell_n^{\mathrm{reg}}(\theta)$ revient donc à calculer l’estimateur MAP
-(\textit{maximum a posteriori}) associé à ce prior : la régularisation de Tikhonov
-est la traduction fréquentiste d’une information a priori sur l’amplitude de $\theta$.
-\end{remark}
-
 \subsection{Pénalités non quadratiques : $\ell^1$ et variation totale}
 \label{subsec:penalites_nonquad}
 
@@ -1469,7 +1435,7 @@ On prend
 Contrairement à la pénalité quadratique, la norme $\ell^1$ est non différentiable en
 zéro et induit de la \emph{parcimonie} : pour $\lambda$ assez grand, certaines
 composantes de $\hat\theta(\lambda)$ sont exactement nulles. Elle est donc appropriée
-lorsque le signal $\theta$ est supposé creux dans la base choisie.
+lorsque le signal $\theta$ est supposé avoir des coordonnées nulles dans la base choisie.
 
 La M-step régularisée $\ell^1$ n'admet plus de forme close, car le problème
 \[
@@ -1606,7 +1572,7 @@ un pic au-dessus de la référence ($\approx 0{,}13$) illustre le phénomène in
 une régularisation trop faible ne stabilise pas suffisamment l'optimisation
 multi-départ et laisse l'EM converger vers des optima locaux de mauvaise qualité.
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section{Extensions}
 \label{sec:extensions}
@@ -1636,7 +1602,7 @@ La formule du gradient~\eqref{eq:gradient_ll} s'applique telle quelle :
     \int_{\Zcal} w_{i,z}(\theta)\, A_z^\top(Y_i - A_z\theta)\,\mathrm{d}\mu(z).
 \]
 Dans le Cas~1, $A_z^\top = \Phi(z)^\top$ était simplement la transposée d'une
-matrice d'évaluation, calculée sans surcoût. Dans le Cas~2, l'adjoint $A_z^\top$
+matrice d'évaluation. Dans le Cas~2, l'adjoint $A_z^\top$
 de l'opérateur de projection est la \emph{rétroprojection} :
 \[
   A_z^\top : \R^p \to E,
@@ -1661,7 +1627,7 @@ La structure du M-step reste identique~\eqref{eq:mstep} :
 Dans le Cas~1, la matrice $\Phi(z)^\top\Phi(z)$ est proportionnelle à l'identité
 quelle que soit la translation $z$ : les colonnes de $\Phi(z)$ sont les
 exponentielles de Fourier évaluées sur une grille uniforme de $p$ points, et
-l'orthogonalité discrète donne $\Phi(z)^\top\Phi(z) = p\,\Id_d$.
+l'orthogonalité donne $\Phi(z)^\top\Phi(z) = p\,\Id_d$.
 La matrice $M^{(k)}$ est donc un multiple de l'identité, naturellement bien
 conditionnée, et le M-step se réduit à un simple quotient.
 
@@ -1670,8 +1636,8 @@ l'opérateur $P^\top P$ est la convolution par un noyau dont la transformée
 de Fourier 1D décroît comme $|\xi|^{-1}$ : il atténue fortement les hautes
 fréquences de $\theta$ et son inversion amplifie le bruit à toutes les
 fréquences au-delà du contenu utile du signal.
-La matrice $M^{(k)}$ hérite de ce mauvais conditionnement — ses plus petites
-valeurs propres tendent vers zéro avec la résolution du maillage — et
+La matrice $M^{(k)}$ hérite de ce mauvais conditionnement : ses plus petites
+valeurs propres tendent vers zéro avec la résolution du maillage et
 l'inversion directe est instable.
 C'est précisément pourquoi la régularisation de la
 Section~\ref{sec:regularisation} est \emph{indispensable} dans le Cas~2,
@@ -1731,7 +1697,7 @@ Soit $\theta \in L^1(\R^2) \cap L^2(\R^2)$ et $z \in [0, \pi[$. On note
   \hat\theta(\xi_1,\xi_2)
   = \int_{\R^2} \theta(\mathbf{x})\,e^{-i(\xi_1 x_1 + \xi_2 x_2)}\,\mathrm{d}\mathbf{x}
 \]
-la transformée de Fourier bidimensionnelle de $\theta$. Alors la transformée
+la transformée de Fourier 2D de $\theta$. Alors la transformée
 de Fourier 1D de la projection $P(R_z\theta)$ vérifie :
 \[
   \widehat{P(R_z\theta)}(\xi)
@@ -1770,7 +1736,7 @@ droites couvrent les fréquences utiles du signal.
 
 Ce théorème éclaire aussi directement le mauvais conditionnement de $M^{(k)}$ :
 la transformée de Fourier du noyau de $P^\top P$ décroît en $|\xi|^{-1}$
-(convolution de Riesz), si bien que l'inversion de $A_z^\top A_z = R_z^\top P^\top P\, R_z$
+, si bien que l'inversion de $A_z^\top A_z = R_z^\top P^\top P\, R_z$
 amplifie le bruit aux hautes fréquences. C'est cette décroissance qui rend la
 régularisation de la Section~\ref{sec:regularisation} \emph{indispensable} dans le
 Cas~2 et seulement optionnelle dans le Cas~1.
@@ -1827,8 +1793,8 @@ sont indiscernables à partir de leurs seules projections, sans information a pr
 sur la symétrie moléculaire.
 
 \paragraph{Perspectives.}
-Les difficultés spécifiques du Cas~2 — mauvais conditionnement de $M^{(k)}$,
-groupe d'ambiguïté $O(2)$, coût numérique élevé — se retrouvent amplifiées
+Les difficultés spécifiques du Cas~2 : mauvais conditionnement de $M^{(k)}$,
+groupe d'ambiguïté $O(2)$, coût numérique élevé, se retrouvent amplifiées
 dans l'analogue tridimensionnel qui constitue le vrai problème de cryo-EM :
 chaque observation est alors une image 2D d'une densité volumique $\theta \in L^2(B(0,1) \subset \R^3)$,
 et les angles de vue $Z_i$ appartiennent au groupe $\mathrm{SO}(3)$
@@ -1848,9 +1814,9 @@ constituerait la principale contribution théorique restante de ce projet.
 \label{subsec:numerique_cas2}
 
 On illustre numériquement les difficultés spécifiques du Cas~2 dans un cadre
-\emph{oracle} où les angles $Z_i$ sont supposés connus. Ce cadre simplifié
-— la reconstruction se réduit à un unique système linéaire, sans étape E —
-suffit à mettre en évidence la nécessité de la régularisation.
+\emph{oracle} où les angles $Z_i$ sont supposés connus. Ce cadre simplifié :
+ la reconstruction se réduit à un unique système linéaire, sans étape E, 
+ suffit à mettre en évidence la nécessité de la régularisation.
 
 \paragraph{Paramètres.}
 Le fantôme est une image $32 \times 32$ ($d = 1024$) représentant un disque
@@ -1932,25 +1898,71 @@ régularisation est décisive, et ce sont précisément celles que le spectre
 en $|\xi|^{-1}$ rend instables.
 
 
-% ════════════════════════════════════════════════════════════════════════════
+% 
 \newpage
 \section*{Conclusion}
 \addcontentsline{toc}{section}{Conclusion}
-% - Bilan des méthodes étudiées
-% - Apports théoriques et numériques
-% - Limites et perspectives
+
+Ce projet a étudié un problème inverse linéaire à variables cachées comme modèle
+jouet de la reconstruction en cryo-EM, en développant une chaîne complète allant
+de la formulation du modèle jusqu'à la validation numérique des algorithmes
+d'estimation.
+
+\paragraph{Bilan des méthodes étudiées.}
+Deux familles d'algorithmes ont été développées pour maximiser la vraisemblance
+marginale $\ell_n$. La \emph{descente de gradient avec recherche de pas par la
+règle d'Armijo} (Section~\ref{sec:optimisation}) offre une mise en œuvre directe
+mais requiert un réglage du pas initial. L'\emph{algorithme EM}, dont la monotonicité
+est garantie par la Proposition~\ref{prop:em_monotonie} et dont les valeurs
+d'adhérence sont toutes des points stationnaires de $\ell_n$ par le
+Théorème~\ref{thm:wu}, s'est révélé plus robuste : dans le Cas~1, la diagonalisation
+$A_z^\top A_z = p\,\Id_d$ rend l'étape M triviale et l'ensemble de la procédure
+numériquement efficace. Les deux algorithmes convergent vers les mêmes maxima
+locaux, ce qui constitue une double validation de l'implémentation.
+
+\paragraph{Apports théoriques.}
+Deux résultats structurent l'analyse. D'une part, la non-identifiabilité du modèle
+a été précisément caractérisée : dans le Cas~1, $\ell_n$ est invariante par les
+translations du tore (Proposition~\ref{prop:invariance_translation}) ; dans le
+Cas~2, elle est invariante par $\mathrm{SO}(2)$ (Proposition~\ref{prop:invariance_so2}),
+et l'ambiguïté chirale étend ce groupe à $O(2)$. Ces observations justifient la
+métrique d'erreur invariante~\eqref{eq:erreur_quotient}, seule quantité estimable
+de façon consistante. D'autre part, le Théorème de la tranche de
+Fourier~(\ref{thm:tranche_fourier}) éclaire simultanément l'identifiabilité
+générique du Cas~2 lorsque les angles sont connus, et le mauvais conditionnement
+de l'étape M via la décroissance en $|\xi|^{-1}$ du spectre de $P^\top P$.
+
+\paragraph{Apports numériques.}
+Les simulations Monte-Carlo de la Section~\ref{sec:analyse_erreur} ont mis en
+évidence un régime de convergence $\varepsilon_n(\sigma) \sim C(\sigma)/\sqrt{n}$
+pour le Cas~1, analogue au taux exact $\sigma\sqrt{\Tr((A^\top A)^{-1})}/\sqrt{n}$
+établi à la Section~\ref{sec:sans_cachees} pour le cas sans variables cachées.
+L'étude de la régularisation a confirmé la prédiction de l'analyse spectrale
+(Section~\ref{subsec:interp_spectrale}) : la courbe d'erreur en fonction de
+$\lambda$ est plate en Cas~1 (absence de compromis biais-variance, $M^{(k)}$
+déjà bien conditionné) et nettement en U en Cas~2 (minimum à $\lambda^*\approx 137$,
+réduction de l'erreur de $33\,\%$ à $7\,\%$). Ces deux comportements opposés,
+prévus théoriquement, ont ainsi été observés dans les mêmes conditions expérimentales.
+
+\paragraph{Perspectives.}
+Plusieurs directions prolongent naturellement ce projet. L'extension à $\mathrm{SO}(3)$
+constitue l'objectif applicatif central~\cite{frank2006three, singer2011three} :
+la loi des $Z_i$ y est uniforme sur $\mathrm{SO}(3)$, le groupe d'ambiguïté est
+$O(3)$, et les techniques développées ici s'y transposent avec un coût numérique
+substantiellement plus élevé. L'hypothèse d'uniformité sur les angles pourrait
+être relâchée en favor d'une densité $f_Z$ inconnue, ramenant le problème à un
+mélange non paramétrique dont l'identifiabilité reste ouverte~\cite{singer2011three}.
+Enfin, l'établissement de bornes minimax pour $\varepsilon_n(\sigma)$ en Cas~2,
+via les outils de l'estimation dans les problèmes inverses~\cite{cavalier2008inverse},
+constituerait la contribution théorique la plus substantielle dans le prolongement
+direct de ce travail.
 
 
-% ── Bibliographie ───────────────────────────────────────────────────────────
+% ── Bibliographie 
 \newpage
 \bibliographystyle{plainnat}
 \bibliography{references}
-% Fichier references.bib à créer
-% Références suggérées :
-%   - Dempster, Laird, Rubin (1977) - article fondateur de l'EM
-%   - McLachlan & Krishnan - The EM Algorithm and Extensions
-%   - Cavalier (2008) - Inverse problems in statistics
-%   - Boyd & Vandenberghe - Convex Optimization (pour la partie optimisation)
+
 
 
 \end{document}
