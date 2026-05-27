@@ -1147,8 +1147,8 @@ et l'erreur quadratique se calculait exactement (Section~\ref{subsec:erreur_simp
 \]
 Dans le modèle général~\eqref{eq:modele} avec variables cachées, la log-vraisemblance
 marginale $\ell_n$ n'est plus quadratique (Section~\ref{sec:mle}), et $\hat\theta_n$
-est désormais la sortie d'un algorithme itératif --- EM ou descente de gradient
-(Section~\ref{sec:optimisation}) --- dont on ne peut pas écrire la forme close.
+est désormais la sortie d'un algorithme itératif EM ou descente de gradient
+(Section~\ref{sec:optimisation}) dont on ne peut pas écrire la forme close.
 Il n'existe donc pas d'analogue direct de la formule ci-dessus : l'erreur doit
 être étudiée numériquement.
 
@@ -1561,7 +1561,7 @@ plutôt que sur la variance statistique.
 Malgré cette variabilité, deux tendances se dégagent. D'une part, la quasi-totalité
 des points est \emph{en dessous} de la référence non régularisée ($\hat\varepsilon
 \approx 0{,}107$, ligne pointillée rouge), confirmant que la régularisation apporte
-un gain systématique même dans ce cas bien conditionné. D'autre part, un minimum
+un gain quasi-systématique même dans ce cas bien conditionné. D'autre part, un minimum
 est atteint autour de $\lambda^* \approx 2$ (ligne pointillée verticale), où
 l'erreur descend à $\approx 0{,}071$, soit un gain de l'ordre de 33\% par rapport
 à l'EM non régularisé. Pour $\lambda > \lambda^*$, l'erreur remonte progressivement
@@ -1684,8 +1684,8 @@ les images $\hat\theta$ et $\theta$ sur la grille, via transformée de Fourier
 rapide 2D.
 
 \paragraph{Théorème de la tranche de Fourier.}
-Le résultat théorique central du Cas~2 est le \emph{théorème de la tranche de Fourier}
-(\textit{Fourier slice theorem}), qui relie la transformée de Fourier 2D de $\theta$
+Le résultat théorique central du Cas~2 est le \emph{théorème de la tranche de Fourier},
+qui relie la transformée de Fourier 2D de $\theta$
 à l'ensemble de ses projections de Radon \cite{natterer2001mathematics}.
 Tout élément $\theta \in E \subset L^2(B(0,1))$, prolongé par zéro hors de $B(0,1)$,
 est bien dans $L^1(\R^2) \cap L^2(\R^2)$ car il est de carré intégrable à support compact.
@@ -1822,7 +1822,7 @@ On illustre numériquement les difficultés spécifiques du Cas~2 dans un cadre
 Le fantôme est une image $32 \times 32$ ($d = 1024$) représentant un disque
 avec deux inclusions d'intensités différentes (Fig.~\ref{fig:reconstruction_2d},
 panneau gauche), analogue d'une coupe moléculaire.
-Les $K = 40$ angles sont uniformément répartis sur $[0°, 180°[$, chacun
+Les $K = 40$ angles sont uniformément répartis sur $[0^{\circ}, 180^{\circ}[$, chacun
 fournissant $p = 32$ mesures, soit $n_{\mathrm{obs}} = 1280$ observations
 (rapport $n_{\mathrm{obs}}/d \approx 1{,}2$). Le bruit est intentionnellement
 faible ($\sigma = 0{,}05$) afin d'isoler l'effet du mauvais conditionnement.

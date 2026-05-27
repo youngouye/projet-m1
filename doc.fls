@@ -261,7 +261,6 @@ INPUT ./figures/erreur_vs_lambda.pdf
 INPUT ./figures/erreur_vs_lambda.pdf
 INPUT ./figures/erreur_vs_lambda.pdf
 INPUT ./figures/erreur_vs_lambda.pdf
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT ./figures/spectre_ATA.pdf
 INPUT ./figures/spectre_ATA.pdf
 INPUT ./figures/spectre_ATA.pdf
