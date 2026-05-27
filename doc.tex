@@ -498,10 +498,6 @@ En notant $A^\dagger = (A^\top A)^{-1}A^\top$ le pseudo-inverse gauche de $A$,
 on a simplement $\hat{\theta}_n = A^\dagger\bar{Y}_n$.
 \end{remark}
 
-\subsection{Convexité et résolution exacte}
-\label{subsec:convexite_simple}
-
-
 \subsection{Analyse de l'erreur d'estimation}
 \label{subsec:erreur_simple}
 
@@ -1884,7 +1880,7 @@ La Figure~\ref{fig:erreur_reg_cas2} montre la courbe en U caractéristique des
 problèmes inverses régularisés. Pour $\lambda \ll \lambda^*$, l'inversion est
 instable : la haute variance domine. Pour $\lambda \gg \lambda^*$, la régularisation
 impose un biais excessif et l'estimateur converge vers zéro. Le minimum est atteint
-en $\lambda^* \approx 137$ avec une erreur de $7\%$, à comparer à $33\%$ sans
+en $\lambda^* \approx 150$ avec une erreur de $7\%$, à comparer à $33\%$ sans
 régularisation — réduction d'un facteur $4{,}8$.
 
 Ce résultat contraste directement avec celui de la Section~\ref{subsec:resultats_reg}
@@ -1950,7 +1946,7 @@ constitue l'objectif applicatif central~\cite{frank2006three, singer2011three} :
 la loi des $Z_i$ y est uniforme sur $\mathrm{SO}(3)$, le groupe d'ambiguïté est
 $O(3)$, et les techniques développées ici s'y transposent avec un coût numérique
 substantiellement plus élevé. L'hypothèse d'uniformité sur les angles pourrait
-être relâchée en favor d'une densité $f_Z$ inconnue, ramenant le problème à un
+être relâchée en faveur d'une densité $f_Z$ inconnue, ramenant le problème à un
 mélange non paramétrique dont l'identifiabilité reste ouverte~\cite{singer2011three}.
 Enfin, l'établissement de bornes minimax pour $\varepsilon_n(\sigma)$ en Cas~2,
 via les outils de l'estimation dans les problèmes inverses~\cite{cavalier2008inverse},

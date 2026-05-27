@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex doc"] 1779895476.44401 "doc.aux" "doc.bbl" "doc" 1779904234.35579 0
+["bibtex doc"] 1779905932.55197 "doc.aux" "doc.bbl" "doc" 1779905933.4506 0
   "./references.bib" 1779870432.62066 3692 ee61219befee15a65843d20eaeb4e9c5 ""
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "doc.aux" 1779904234.08625 25026 72d4d79715d249cf9641bc56f014c2db "pdflatex"
+  "doc.aux" 1779905933.18681 24788 1a10c9363f711e91713e48111dbee9ce "pdflatex"
   (generated)
   "doc.bbl"
   "doc.blg"
   (rewritten before read)
-["pdflatex"] 1779904233.43246 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779904234.35598 0
-  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779904233.13393 90303 ef135a9f67da26efcf8b926f8cc10b57 ""
+["pdflatex"] 1779905932.63303 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779905933.45073 0
+  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779905931.42731 90224 1264478c594bad17885211b846629fc1 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
@@ -153,11 +153,11 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1776934883 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1776934857 3636773 ca6384a8b33025b44d8424c1f3898ae2 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "doc.aux" 1779904234.08625 25026 72d4d79715d249cf9641bc56f014c2db "pdflatex"
-  "doc.bbl" 1779895476.5257 2247 b269e72eee13c000ac2687ced0e5fc26 "bibtex doc"
-  "doc.out" 1779904234.08828 9745 7fbe0a44fcb903f68a7feee691bd9fec "pdflatex"
-  "doc.tex" 1779904233.13393 90303 ef135a9f67da26efcf8b926f8cc10b57 ""
-  "doc.toc" 1779904234.08852 8698 7be40a2c4ab13e95c3eeb999c8ee3d72 "pdflatex"
+  "doc.aux" 1779905933.18681 24788 1a10c9363f711e91713e48111dbee9ce "pdflatex"
+  "doc.bbl" 1779905932.63063 2247 b269e72eee13c000ac2687ced0e5fc26 "bibtex doc"
+  "doc.out" 1779905933.18879 9522 31ce735f1ae730a4eb9dee2383d6ac73 "pdflatex"
+  "doc.tex" 1779905931.42731 90224 1264478c594bad17885211b846629fc1 ""
+  "doc.toc" 1779905933.18899 8599 46956791385321cd08bdc72b44263779 "pdflatex"
   "figures/cryo-Singer.pdf" 1779895320.03547 106908 f743a327bb08c9be86eaafa068b3bb8d ""
   "figures/erreur_reg_cas2.pdf" 1779887669.1355 20015 e62474223c3decc5d8300cbf84cb49d2 ""
   "figures/erreur_vs_lambda.pdf" 1779885619.17158 19053 9ed5e4573c6e9265e63e0f5f13716f63 ""
