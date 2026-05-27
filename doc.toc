@@ -79,6 +79,21 @@
 \contentsline {paragraph}{Résumé comparatif.}{32}{section*.49}%
 \contentsline {subsection}{\numberline {6.4}Interprétation spectrale}{33}{subsection.6.4}%
 \contentsline {subsection}{\numberline {6.5}Choix du paramètre $\lambda $}{33}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Extensions}{34}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Cas 2 : rotations et projections en 2D}{34}{subsection.7.1}%
-\contentsline {section}{Conclusion}{35}{section*.50}%
+\contentsline {subsection}{\numberline {6.6}Résultats numériques}{33}{subsection.6.6}%
+\contentsline {paragraph}{Monotonicité de l'EM régularisé.}{33}{section*.50}%
+\contentsline {paragraph}{Effet de $\lambda $ sur l'erreur d'estimation.}{34}{section*.51}%
+\contentsline {section}{\numberline {7}Extensions}{35}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Cas 2 : rotations et projections en 2D}{35}{subsection.7.1}%
+\contentsline {paragraph}{Adaptation de la descente de gradient.}{35}{section*.53}%
+\contentsline {paragraph}{Adaptation du M-step EM.}{35}{section*.54}%
+\contentsline {paragraph}{Identifiabilité et métrique d'erreur adaptée.}{36}{section*.55}%
+\contentsline {paragraph}{Théorème de la tranche de Fourier.}{36}{section*.56}%
+\contentsline {paragraph}{Bilan comparatif Cas~1 / Cas~2.}{37}{section*.57}%
+\contentsline {paragraph}{Ambiguïté chirale.}{38}{section*.59}%
+\contentsline {paragraph}{Perspectives.}{38}{section*.60}%
+\contentsline {subsection}{\numberline {7.2}Étude numérique : reconstruction 2D oracle}{39}{subsection.7.2}%
+\contentsline {paragraph}{Paramètres.}{39}{section*.61}%
+\contentsline {paragraph}{Spectre de $A^\top A$ et mauvais conditionnement.}{39}{section*.62}%
+\contentsline {paragraph}{Comparaison des reconstructions.}{40}{figure.caption.65}%
+\contentsline {paragraph}{Courbe en U et sélection de $\lambda $.}{40}{figure.caption.67}%
+\contentsline {section}{Conclusion}{42}{section*.68}%

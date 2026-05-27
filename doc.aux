@@ -103,6 +103,7 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}Fonction auxiliaire $Q$}{22}{subsubsection.4.2.2}\protected@file@percent }
 \newlabel{eq:Q_function}{{12}{22}{Fonction auxiliaire $Q$}{equation.12}{}}
 \newlabel{eq:Q_explicite}{{13}{22}{Fonction auxiliaire $Q$}{equation.13}{}}
+\citation{dempster1977maximum}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Étape E (Espérance)}{23}{subsubsection.4.2.3}\protected@file@percent }
 \newlabel{eq:estep}{{14}{23}{Étape E (Espérance)}{equation.14}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Étape M (Maximisation)}{23}{subsubsection.4.2.4}\protected@file@percent }
@@ -110,9 +111,10 @@
 \newlabel{eq:Mk}{{16}{23}{Étape M (Maximisation)}{equation.16}{}}
 \newlabel{eq:bk}{{17}{23}{Étape M (Maximisation)}{equation.17}{}}
 \@writefile{toc}{\contentsline {paragraph}{Application au Cas 1.}{23}{section*.36}\protected@file@percent }
+\citation{wu1983convergence}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Propriétés}{24}{subsubsection.4.2.5}\protected@file@percent }
-\newlabel{prop:em_monotonie}{{4.1}{24}{Monotonie, Dempster, Laird \& Rubin 1977}{theorem.4.1}{}}
-\newlabel{thm:wu}{{4.3}{24}{Wu, 1983}{theorem.4.3}{}}
+\newlabel{prop:em_monotonie}{{4.1}{24}{Monotonie, \cite {dempster1977maximum}}{theorem.4.1}{}}
+\newlabel{thm:wu}{{4.3}{24}{\cite {wu1983convergence}}{theorem.4.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Comparaison des deux approches}{25}{subsection.4.3}\protected@file@percent }
 \newlabel{subsec:comparaison}{{4.3}{25}{Comparaison des deux approches}{subsection.4.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Analyse de la qualité de l'estimation}{26}{section.5}\protected@file@percent }
@@ -151,11 +153,53 @@
 \newlabel{subsec:interp_spectrale}{{6.4}{33}{Interprétation spectrale}{subsection.6.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Choix du paramètre $\lambda $}{33}{subsection.6.5}\protected@file@percent }
 \newlabel{subsec:choix_lambda}{{6.5}{33}{Choix du paramètre \texorpdfstring {$\lambda $}{lambda}}{subsection.6.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Extensions}{34}{section.7}\protected@file@percent }
-\newlabel{sec:extensions}{{7}{34}{Extensions}{section.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Cas 2 : rotations et projections en 2D}{34}{subsection.7.1}\protected@file@percent }
-\newlabel{subsec:cas2_extensions}{{7.1}{34}{Cas 2 : rotations et projections en 2D}{subsection.7.1}{}}
-\@writefile{toc}{\contentsline {section}{Conclusion}{35}{section*.50}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}Résultats numériques}{33}{subsection.6.6}\protected@file@percent }
+\newlabel{subsec:resultats_reg}{{6.6}{33}{Résultats numériques}{subsection.6.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Monotonicité de l'EM régularisé.}{33}{section*.50}\protected@file@percent }
+\citation{boyd2004convex}
+\@writefile{toc}{\contentsline {paragraph}{Effet de $\lambda $ sur l'erreur d'estimation.}{34}{section*.51}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Erreur relative $\hat  \varepsilon _n(\sigma )$ en fonction de $\lambda $ pour l'EM de Tikhonov ($n=50$, $\sigma =0{,}3$, $M=20$ répétitions). La ligne pointillée rouge indique l'erreur de l'EM non régularisé ($\lambda =0$).}}{34}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:erreur_vs_lambda}{{4}{34}{Erreur relative $\hat \varepsilon _n(\sigma )$ en fonction de $\lambda $ pour l'EM de Tikhonov ($n=50$, $\sigma =0{,}3$, $M=20$ répétitions). La ligne pointillée rouge indique l'erreur de l'EM non régularisé ($\lambda =0$)}{figure.caption.52}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Extensions}{35}{section.7}\protected@file@percent }
+\newlabel{sec:extensions}{{7}{35}{Extensions}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Cas 2 : rotations et projections en 2D}{35}{subsection.7.1}\protected@file@percent }
+\newlabel{subsec:cas2_extensions}{{7.1}{35}{Cas 2 : rotations et projections en 2D}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Adaptation de la descente de gradient.}{35}{section*.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Adaptation du M-step EM.}{35}{section*.54}\protected@file@percent }
+\citation{natterer2001mathematics}
+\@writefile{toc}{\contentsline {paragraph}{Identifiabilité et métrique d'erreur adaptée.}{36}{section*.55}\protected@file@percent }
+\newlabel{prop:invariance_so2}{{7.1}{36}{}{theorem.7.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Théorème de la tranche de Fourier.}{36}{section*.56}\protected@file@percent }
+\newlabel{thm:tranche_fourier}{{7.2}{37}{Tranche de Fourier}{theorem.7.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bilan comparatif Cas~1 / Cas~2.}{37}{section*.57}\protected@file@percent }
+\citation{frank2006three}
+\citation{frank2006three,singer2011three}
+\citation{singer2011three}
+\citation{cavalier2008inverse}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparaison structurelle des deux cas du modèle~\eqref  {eq:modele}.}}{38}{table.caption.58}\protected@file@percent }
+\newlabel{tab:comparaison_cas}{{1}{38}{Comparaison structurelle des deux cas du modèle~\eqref {eq:modele}}{table.caption.58}{}}
+\@writefile{toc}{\contentsline {paragraph}{Ambiguïté chirale.}{38}{section*.59}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Perspectives.}{38}{section*.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Étude numérique : reconstruction 2D oracle}{39}{subsection.7.2}\protected@file@percent }
+\newlabel{subsec:numerique_cas2}{{7.2}{39}{Étude numérique : reconstruction 2D oracle}{subsection.7.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Paramètres.}{39}{section*.61}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Spectre de $A^\top A$ et mauvais conditionnement.}{39}{section*.62}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Valeurs propres triées de $A^\top A$ en Cas~2 (Radon, courbe bleue) et en Cas~1 (tirets rouges, $\mu _j = p = 32$ constant). L'axe vertical est logarithmique.}}{39}{figure.caption.63}\protected@file@percent }
+\newlabel{fig:spectre_ATA}{{5}{39}{Valeurs propres triées de $A^\top A$ en Cas~2 (Radon, courbe bleue) et en Cas~1 (tirets rouges, $\mu _j = p = 32$ constant). L'axe vertical est logarithmique}{figure.caption.63}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Reconstruction oracle en Cas~2 ($K=40$ angles, $\sigma =0{,}05$). De gauche à droite : image vraie $\theta $, reconstruction sans régularisation (erreur $33\%$), reconstruction Tikhonov $\lambda = 150$ (erreur $7\%$).}}{40}{figure.caption.65}\protected@file@percent }
+\newlabel{fig:reconstruction_2d}{{6}{40}{Reconstruction oracle en Cas~2 ($K=40$ angles, $\sigma =0{,}05$). De gauche à droite : image vraie $\theta $, reconstruction sans régularisation (erreur $33\%$), reconstruction Tikhonov $\lambda = 150$ (erreur $7\%$)}{figure.caption.65}{}}
+\@writefile{toc}{\contentsline {paragraph}{Comparaison des reconstructions.}{40}{figure.caption.65}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Erreur de reconstruction $\|\hat  \theta (\lambda ) - \theta \|/\|\theta \|$ en fonction de $\lambda $ (Cas~2, oracle). La courbe en U contraste avec la courbe plate du Cas~1 (Figure~\ref {fig:erreur_vs_lambda}).}}{40}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:erreur_reg_cas2}{{7}{40}{Erreur de reconstruction $\|\hat \theta (\lambda ) - \theta \|/\|\theta \|$ en fonction de $\lambda $ (Cas~2, oracle). La courbe en U contraste avec la courbe plate du Cas~1 (Figure~\ref {fig:erreur_vs_lambda})}{figure.caption.67}{}}
+\@writefile{toc}{\contentsline {paragraph}{Courbe en U et sélection de $\lambda $.}{40}{figure.caption.67}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{Conclusion}{42}{section*.68}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{references}
-\gdef \@abspage@last{36}
+\bibcite{boyd2004convex}{{1}{2004}{{Boyd and Vandenberghe}}{{}}}
+\bibcite{cavalier2008inverse}{{2}{2008}{{Cavalier}}{{}}}
+\bibcite{dempster1977maximum}{{3}{1977}{{Dempster et~al.}}{{Dempster, Laird, and Rubin}}}
+\bibcite{frank2006three}{{4}{2006}{{Frank}}{{}}}
+\bibcite{natterer2001mathematics}{{5}{2001}{{Natterer}}{{}}}
+\bibcite{singer2011three}{{6}{2011}{{Singer and Shkolnisky}}{{}}}
+\bibcite{wu1983convergence}{{7}{1983}{{Wu}}{{}}}
+\gdef \@abspage@last{44}

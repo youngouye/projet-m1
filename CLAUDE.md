@@ -9,7 +9,10 @@ M1 research project (Université Paris Cité, MMAS 2025–2026) by Arthur Conche
 The repo has two deliverables that evolve in parallel:
 
 - **`doc.tex` → `doc.pdf`** — the written report (French, ~1127 lines of LaTeX).
-- **`code python/1DD_optimise.ipynb`** — numerical experiments for Cas 1 (1D translations); produces figures and validates the algorithms discussed in the report.
+- **`code python/`** — three notebooks for Cas 1 (1D translations), each self-contained with its own data generation:
+  - `graddesc_cas1.ipynb` — gradient descent with Armijo backtracking; produces `signaux_1D.pdf` and `simulation_parametres.pdf`.
+  - `em_cas1.ipynb` — EM algorithm (loop-based, readable); validates the E/M-step derivations.
+  - `analyse_erreur.ipynb` — Monte-Carlo study of ε_n(σ); uses a fully vectorised EM; produces `erreur_vs_n.pdf` and `erreur_vs_sigma.pdf`.
 
 `Projet_M1.pdf` is the assignment brief from the supervisor. `Exemples_Rapports_M1_MMAS/` contains six PDFs of prior years' reports as style/scope references — they are **not** part of this project's source.
 
@@ -23,7 +26,7 @@ latexmk -c                    # clean aux files (.aux .fls .fdb_latexmk .log .ou
 latexmk -C                    # also remove doc.pdf
 ```
 
-The `.tex` references `\bibliography{references}` but **`references.bib` does not yet exist** — first `latexmk` run will warn about undefined citations until that file is created.
+The `.tex` references `\bibliography{references}`. `references.bib` exists at the repo root with entries for: Dempster/Laird/Rubin 1977 (EM), McLachlan & Krishnan, Wu 1983 (convergence EM), Natterer 2001 (Radon), Frank 2006 (cryo-EM), Singer & Shkolnisky 2011 (cryo-EM), Cavalier 2008 (inverse problems), Boyd & Vandenberghe (optimization).
 
 Python / notebooks (venv lives at `.venv/`, Python 3.14):
 
@@ -51,25 +54,55 @@ Section flow in `doc.tex` mirrors the methodology: (§1) setup → (§2) referen
 
 When implementing algorithms in notebooks, the Fourier diagonalization of Cas 1 is the key efficiency lever: do not rotate in the spatial domain.
 
-## Notebook architecture (`code python/1DD_optimise.ipynb`)
+## Notebook architecture (`code python/`)
 
-Global parameters at the top of the notebook: `n` (observations), `p` (grid points), `N` (Fourier frequencies), `d = 2N+1` (signal dimension), `sigma` (noise), `n_z` (quadrature points for the $z$-integral).
+All three notebooks share the same global parameters: `n` (observations), `p` (grid points, 32), `N` (Fourier frequencies, 3), `d = 2N+1` (signal dimension, 7), `sigma` (noise), `n_z` (quadrature points). Core primitives are duplicated across notebooks (each is self-contained).
 
-Key functions:
+### Core primitives (all three notebooks)
 
 | Function | Role |
 |---|---|
 | `build_phi(z)` | Returns the $(p \times d)$ evaluation matrix $\Phi(z)$; `build_phi(z) @ u` gives $A_z\theta$ on the grid |
-| `build_phiu(z, u)` | Thin wrapper: `build_phi(z) @ u`; returns the signal vector on the grid as `(p,)` |
+| `build_phiu(z, u)` | Thin wrapper returning `(p,)` signal vector |
 | `qi(z, y, u)` | Computes $\frac{1}{2\sigma^2}\|y - \Phi(z)u\|^2$, clipped to 745 to avoid float64 overflow |
-| `log_likelihood(u)` | Marginal log-likelihood via Riemann quadrature + `scipy.logsumexp` for numerical stability |
-| `compute_gradient(u)` | Gradient $\nabla_\theta \ell_n$ using posterior weights $w_{i,z}$ (eq. 3.5 in the report) |
-| `gradient_ascent_armijo(u0, ...)` | Gradient ascent with Armijo backtracking line search; returns `(u_hat, hist_ll, hist_grad)` |
-| `translation_error(u_hat, u_true, xgrid)` | Translation-invariant relative error via FFT cross-correlation (aligns signals before comparing) |
+| `log_likelihood(u)` | Marginal log-likelihood via Riemann quadrature + `scipy.logsumexp` |
+| `translation_error(u_hat, u_true)` | Translation-invariant relative error via FFT cross-correlation |
 
-**Performance note:** `compute_gradient` contains a Python loop over `n × n_z` iterations, making it the bottleneck for large `n` or `n_z`. Vectorising with a stacked Phi tensor `(n_z, p, d)` is the natural next step.
+### `graddesc_cas1.ipynb`
 
-Generated figures are saved to `../figures/` (i.e. `figures/` at the repo root): `signaux_1D.pdf` and `simulation_parametres.pdf`.
+| Function | Role |
+|---|---|
+| `compute_gradient(u)` | Gradient $\nabla_\theta \ell_n$ using posterior weights $w_{i,z}$ (loop over `n × n_z`) |
+| `gradient_ascent_armijo(u0, ...)` | Gradient ascent with Armijo backtracking; returns `(u_hat, hist_ll, hist_grad)` |
+
+### `em_cas1.ipynb`
+
+| Function | Role |
+|---|---|
+| `e_step(u)` | Returns posterior weight matrix $(n \times n_z)$; uses softmax stabilisation |
+| `m_step(weights)` | Solves the weighted least-squares system $Au = b$ via `np.linalg.solve`; returns $u^{k+1}$ |
+| `em(u0, ...)` | Full EM loop; returns `(u_hat, hist_ll, hist_u)`; converges when ll gain < `tol` |
+
+**Initialisation note:** start EM from `u0 = 0.5 * np.random.randn(d)` (reduced amplitude). A large `u0` saturates all quadrature weights at the first E-step (all `qi` hit the clip ceiling), making the weights uniform and locking EM on a bad fixed point.
+
+### `analyse_erreur.ipynb`
+
+Fully vectorised EM for Monte-Carlo speed. At import time it pre-computes:
+- `Phi_stack` `(n_z, p, d)` — all $\Phi(z_q)$ at once
+- `PhiTPhi_stack` `(n_z, d, d)` — all $\Phi(z_q)^T \Phi(z_q)$ via `einsum`
+
+| Function | Role |
+|---|---|
+| `e_step(u, observations, sigma)` | Vectorised E-step; residuals computed as `(n, n_z, p)` broadcast |
+| `m_step(weights, observations)` | Vectorised M-step via `einsum`; no Python loops |
+| `em_run(observations, sigma, ...)` | Multi-start EM; returns best `u` by log-likelihood |
+| `generate_data(n, sigma)` | Generates `n` observations $Y_i = \Phi(Z_i)u^\star + \sigma E_i$ |
+| `estimate_eps(n, sigma, M)` | Monte-Carlo estimate of $\varepsilon_n(\sigma)$: $\sqrt{\frac{1}{M}\sum \text{err}^2}$ |
+| `ref_error(n, sigma)` | Section 2 reference: $\frac{\sigma}{\sqrt{n}}\sqrt{\mathrm{Tr}((A^TA)^{-1})}$ |
+
+Generated figures (all saved to `../figures/`, i.e. `figures/` at repo root):
+- `signaux_1D.pdf`, `simulation_parametres.pdf` — from `graddesc_cas1.ipynb`
+- `erreur_vs_n.pdf`, `erreur_vs_sigma.pdf` — from `analyse_erreur.ipynb`
 
 ## LaTeX conventions in `doc.tex`
 

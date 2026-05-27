@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex doc"] 0 "doc.aux" "doc.bbl" "doc" 1779822964.08336 0
+["bibtex doc"] 1779888180.50562 "doc.aux" "doc.bbl" "doc" 1779888181.50703 0
+  "./references.bib" 1779870432.62066 3692 ee61219befee15a65843d20eaeb4e9c5 ""
   "/usr/local/texlive/2026/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "doc.aux" 0 -1 0 "pdflatex"
-  "references.bib" 0 -1 0 ""
+  "doc.aux" 1779888181.23771 23673 808f1d359c05a84b6efe7f734a436235 "pdflatex"
   (generated)
   "doc.bbl"
   "doc.blg"
   (rewritten before read)
-["pdflatex"] 1779822963.31722 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779822964.0835 0
-  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779822962.23677 74989 23c81e9beb235d233a5de83b0c17be2e ""
+["pdflatex"] 1779888180.60903 "/Users/arthurconche/Desktop/projet-M1/doc.tex" "doc.pdf" "doc" 1779888181.50712 0
+  "/Users/arthurconche/Desktop/projet-M1/doc.tex" 1779888180.25844 93437 bbd690e51edba3d8b679dbc96c768b1f ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ecbx1095.tfm" 1136768653 3584 21b378cca2e40816b0e6d74a4dc98f04 ""
@@ -26,6 +26,7 @@
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ecrm2488.tfm" 1136768653 3584 406ad7b70d9a41f7833f92b6313150c8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ecti1200.tfm" 1136768653 3072 8b5a64dc91775463bc95e2d818524028 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/ectt1200.tfm" 1136768653 1536 487c9b46984a816c7ed238d0674595c7 ""
+  "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -156,14 +157,18 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1776934883 5573038 b99aad5e4898a9034e953632f940512b ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1776934857 3636773 ca6384a8b33025b44d8424c1f3898ae2 ""
   "/usr/local/texlive/2026/texmf.cnf" 1774209515 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "doc.aux" 1779822963.8241 18112 c0f7944deb9a3305381220615aff9701 "pdflatex"
-  "doc.bbl" 0 -1 0 "bibtex doc"
-  "doc.out" 1779822963.82585 9289 985b938a1109081890804cab301917aa "pdflatex"
-  "doc.tex" 1779822962.23677 74989 23c81e9beb235d233a5de83b0c17be2e ""
-  "doc.toc" 1779822963.82607 7248 3b8cbaf2afc452c865840a076a72455e "pdflatex"
-  "figures/erreur_vs_n.pdf" 1779821684.2372 23359 369b8675e75a4f8483bca731b8e75ebb ""
-  "figures/erreur_vs_sigma.pdf" 1779821755.28827 16972 df0acbf187d7b54d1024334a68e2447f ""
+  "doc.aux" 1779888181.23771 23673 808f1d359c05a84b6efe7f734a436235 "pdflatex"
+  "doc.bbl" 1779888180.60527 2247 b269e72eee13c000ac2687ced0e5fc26 "bibtex doc"
+  "doc.out" 1779888181.23996 9745 7fbe0a44fcb903f68a7feee691bd9fec "pdflatex"
+  "doc.tex" 1779888180.25844 93437 bbd690e51edba3d8b679dbc96c768b1f ""
+  "doc.toc" 1779888181.24025 8482 77c46fd0a1e52ecde39393ed7578bf53 "pdflatex"
+  "figures/erreur_reg_cas2.pdf" 1779887669.1355 20015 e62474223c3decc5d8300cbf84cb49d2 ""
+  "figures/erreur_vs_lambda.pdf" 1779885619.17158 19053 9ed5e4573c6e9265e63e0f5f13716f63 ""
+  "figures/erreur_vs_n.pdf" 1779886050.2119 23359 b78fef55d1189e0a0eda88f89d11f169 ""
+  "figures/erreur_vs_sigma.pdf" 1779886122.02522 16972 96a91912991b5517cabb2f27250e204e ""
+  "figures/reconstruction_2d.pdf" 1779887668.57785 27380 d327f77d512288d2cc55bb6c2c9990e1 ""
   "figures/simulation_parametres.pdf" 1779799502.71198 35533 1362e4fd747f0692ba40b892d92e61ac ""
+  "figures/spectre_ATA.pdf" 1779887669.36582 21939 3fb0882d654d6b358e6296756d6c707d ""
   (generated)
   "doc.aux"
   "doc.log"

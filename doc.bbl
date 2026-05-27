@@ -1,0 +1,50 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Boyd and Vandenberghe(2004)]{boyd2004convex}
+Stephen Boyd and Lieven Vandenberghe.
+\newblock \emph{Convex Optimization}.
+\newblock Cambridge University Press, Cambridge, 2004.
+\newblock URL \url{https://web.stanford.edu/~boyd/cvxbook/}.
+
+\bibitem[Cavalier(2008)]{cavalier2008inverse}
+Laure Cavalier.
+\newblock Nonparametric statistical inverse problems.
+\newblock \emph{Inverse Problems}, 24\penalty0 (3):\penalty0 034004, 2008.
+\newblock \doi{10.1088/0266-5611/24/3/034004}.
+
+\bibitem[Dempster et~al.(1977)Dempster, Laird, and Rubin]{dempster1977maximum}
+Arthur~P. Dempster, Nan~M. Laird, and Donald~B. Rubin.
+\newblock Maximum likelihood from incomplete data via the {EM} algorithm.
+\newblock \emph{Journal of the Royal Statistical Society: Series B}, 39\penalty0 (1):\penalty0 1--22, 1977.
+\newblock \doi{10.1111/j.2517-6161.1977.tb01600.x}.
+
+\bibitem[Frank(2006)]{frank2006three}
+Joachim Frank.
+\newblock \emph{Three-Dimensional Electron Microscopy of Macromolecular Assemblies: Viewing the Machinery of Life}.
+\newblock Oxford University Press, Oxford, 2 edition, 2006.
+\newblock \doi{10.1093/acprof:oso/9780195182187.001.0001}.
+
+\bibitem[Natterer(2001)]{natterer2001mathematics}
+Frank Natterer.
+\newblock \emph{The Mathematics of Computerized Tomography}.
+\newblock Classics in Applied Mathematics. SIAM, Philadelphia, PA, 2001.
+\newblock \doi{10.1137/1.9780898719284}.
+
+\bibitem[Singer and Shkolnisky(2011)]{singer2011three}
+Amit Singer and Yoel Shkolnisky.
+\newblock Three-dimensional structure determination from common lines in cryo-{EM} by eigenvectors and semidefinite programming.
+\newblock \emph{SIAM Journal on Imaging Sciences}, 4\penalty0 (2):\penalty0 543--572, 2011.
+\newblock \doi{10.1137/090767777}.
+
+\bibitem[Wu(1983)]{wu1983convergence}
+C.~F.~Jeff Wu.
+\newblock On the convergence properties of the {EM} algorithm.
+\newblock \emph{The Annals of Statistics}, 11\penalty0 (1):\penalty0 95--103, 1983.
+\newblock \doi{10.1214/aos/1176346060}.
+
+\end{thebibliography}

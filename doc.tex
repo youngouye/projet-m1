@@ -1091,7 +1091,7 @@ Le système~\eqref{eq:mstep} est de taille $d \times d$ (avec $d = 2N+1 \ll p$) 
 
 \subsubsection{Propriétés}
 
-\begin{proposition}[Monotonie, Dempster, Laird \& Rubin 1977]
+\begin{proposition}[Monotonie, \cite{dempster1977maximum}]
 \label{prop:em_monotonie}
 L'algorithme EM est monotone : $\ell_n(\theta^{(k+1)}) \geq \ell_n(\theta^{(k)})$ pour tout $k \geq 0$.
 \end{proposition}
@@ -1132,7 +1132,7 @@ Par définition de l’étape M, $Q(\theta^{(k+1)}\mid\theta^{(k)}) \ge Q(\theta
 La monotonie vaut même si l'étape~M est remplacée par une étape augmentant $Q$ sans le maximiser exactement (algorithme GEM, \emph{Generalized EM}).
 \end{remark}
 
-\begin{theorem}[Wu, 1983]
+\begin{theorem}[\cite{wu1983convergence}]
 \label{thm:wu}
 Sous des conditions de régularité sur $\ell_n$ (continuité de $\theta \mapsto Q(\theta \mid \theta')$ et compacité des sous-niveaux), toute valeur d'adhérence de la suite $(\theta^{(k)})$ est un point stationnaire de $\ell_n$, c'est-à-dire vérifie $\nabla_\theta\ell_n(\theta) = 0$.
 \end{theorem}
@@ -1233,7 +1233,8 @@ l'intégrale sur $z$, et $M = 15$ répétitions Monte-Carlo par point de mesure.
 L'algorithme EM est lancé avec $20$ initialisations aléatoires (amplitude $0{,}5$)
 par répétition ; on retient la solution de meilleure log-vraisemblance finale.
 L'erreur estimée $\widehat\varepsilon_n(\sigma)$ est calculée via~\eqref{eq:erreur_empirique}.
-La courbe de référence tracée en tirets est celle de la Section~\ref{sec:cas_reference} :
+La courbe de référence tracée en tirets est celle de la Section~\ref{sec:sans_cachees}:
+
 \[
   \varepsilon_n^{\mathrm{ref}}(\sigma)
   = \frac{\sigma}{\sqrt{n}}\sqrt{\mathrm{Tr}\bigl[(A^TA)^{-1}\bigr]},
@@ -1258,8 +1259,8 @@ La figure~\ref{fig:erreur_vs_n} révèle le phénomène central de cette étude.
 Pour $\sigma \in \{0{,}3, 0{,}5, 1{,}0\}$, l'erreur EM se stabilise autour
 de $0{,}10$–$0{,}13$ dès $n \approx 50$ et ne décroît plus lorsque $n$ augmente,
 alors que la courbe de référence oracle continue de suivre la pente $n^{-1/2}$.
-Ce décalage croissant — d'un facteur $1{,}5$ à $n = 10$ jusqu'à $4$–$5$
-à $n = 200$ — ne provient pas d'une insuffisance statistique du modèle : plus
+Ce décalage croissant d'un facteur $1{,}5$ à $n = 10$ jusqu'à $4$,$5$
+à $n = 200$, ne provient pas d'une insuffisance statistique du modèle : plus
 de données n'améliore pas l'estimation parce que l'algorithme EM converge vers
 un optimum local de la log-vraisemblance marginale, elle-même non concave.
 Le goulot d'étranglement est donc \emph{algorithmique} plutôt que statistique.
@@ -1554,6 +1555,56 @@ En pratique, la validation croisée est la méthode la plus robuste dans notre c
 où le modèle à variables cachées complique l'évaluation de la vraisemblance pénalisée
 pour chaque valeur candidate de $\lambda$.
 
+\subsection{Résultats numériques}
+\label{subsec:resultats_reg}
+
+On valide numériquement l'algorithme EM régularisé en Cas~1 sur les mêmes
+paramètres que la Section~\ref{sec:analyse_erreur} :
+$n = 50$ observations, $p = 32$ points de grille, $N = 3$ fréquences ($d = 7$),
+$\sigma = 0{,}3$, $n_z = 50$ points de quadrature.
+
+\paragraph{Monotonicité de l'EM régularisé.}
+Pour $\lambda = 0{,}1$, l'algorithme converge en 21 itérations.
+Le gain minimal de log-vraisemblance entre deux itérations consécutives vaut
+$+4{,}2 \times 10^{-9} > 0$, ce qui confirme numériquement la monotonicité
+de l'EM (Proposition~\ref{prop:em_monotonie}) après l'ajout du terme de
+régularisation.
+
+\paragraph{Effet de $\lambda$ sur l'erreur d'estimation.}
+La Figure~\ref{fig:erreur_vs_lambda} trace l'erreur relative invariante par
+translation $\hat\varepsilon_n(\sigma)$ en fonction de $\lambda$ sur une grille
+log-uniforme de 20 valeurs dans $[10^{-3}, 10]$, estimée par $M = 20$ répétitions
+Monte-Carlo indépendantes avec 3 initialisations aléatoires par répétition.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.72\textwidth]{erreur_vs_lambda}
+  \caption{Erreur relative $\hat\varepsilon_n(\sigma)$ en fonction de $\lambda$
+    pour l'EM de Tikhonov ($n=50$, $\sigma=0{,}3$, $M=20$ répétitions).
+    La ligne pointillée rouge indique l'erreur de l'EM non régularisé ($\lambda=0$).}
+  \label{fig:erreur_vs_lambda}
+\end{figure}
+
+La courbe présente une forte variabilité Monte-Carlo (oscillations visibles),
+cohérente avec le faible nombre de répétitions ($M = 20$) et le fait que, dans
+le Cas~1, $M^{(k)} \approx p\,\Id_d$ quelle que soit la translation : la matrice
+à inverser est déjà bien conditionnée, si bien que la régularisation agit
+principalement sur la variance algorithmique (choix du bassin d'attraction de l'EM)
+plutôt que sur la variance statistique.
+
+Malgré cette variabilité, deux tendances se dégagent. D'une part, la quasi-totalité
+des points est \emph{en dessous} de la référence non régularisée ($\hat\varepsilon
+\approx 0{,}107$, ligne pointillée rouge), confirmant que la régularisation apporte
+un gain systématique même dans ce cas bien conditionné. D'autre part, un minimum
+est atteint autour de $\lambda^* \approx 2$ (ligne pointillée verticale), où
+l'erreur descend à $\approx 0{,}071$, soit un gain de l'ordre de 33\% par rapport
+à l'EM non régularisé. Pour $\lambda > \lambda^*$, l'erreur remonte progressivement
+vers la référence : le biais introduit par la contrainte de norme commence à dominer,
+conformément au compromis biais-variance classique des problèmes inverses
+régularisés \cite{boyd2004convex}. À très faible $\lambda$ ($\approx 10^{-2}$),
+un pic au-dessus de la référence ($\approx 0{,}13$) illustre le phénomène inverse :
+une régularisation trop faible ne stabilise pas suffisamment l'optimisation
+multi-départ et laisse l'EM converger vers des optima locaux de mauvaise qualité.
 
 % ════════════════════════════════════════════════════════════════════════════
 \newpage
@@ -1562,10 +1613,323 @@ pour chaque valeur candidate de $\lambda$.
 
 \subsection{Cas 2 : rotations et projections en 2D}
 \label{subsec:cas2_extensions}
-% - Rappel du modèle, lien avec la tomographie
-% - Adaptation des algorithmes (gradient, EM) au Cas 2
-% - Résultats numériques : reconstruction d'une image 2D
-% - Comparaison avec le Cas 1
+
+Le Cas~2, introduit en Section~\ref{subsubsec:cas2}, est l'analogue bidimensionnel
+du problème de cryo-EM. Chaque observation est un sinogramme bruité de $\theta$
+selon un angle de vue $Z_i$ inconnu :
+\[
+  Y_i = A_{Z_i}\theta + \sigma E_i \in \R^p,
+  \qquad
+  A_z = \mathrm{ev}_{\mathrm{grille}} \circ P \circ R_z,
+\]
+où $R_z$ est la rotation d'angle $z$ dans $\R^2$ et $P$ est la projection selon
+l'axe vertical (transformée de Radon, Section~\ref{subsubsec:cas2}).
+Les algorithmes de la Section~\ref{sec:optimisation} s'adaptent formellement,
+mais cette généralisation fait apparaître des difficultés nouvelles de nature
+analytique, numérique et liée à l'identifiabilité.
+
+\paragraph{Adaptation de la descente de gradient.}
+La formule du gradient~\eqref{eq:gradient_ll} s'applique telle quelle :
+\[
+  \nabla_\theta \ell_n(\theta)
+  = \frac{1}{\sigma^2}\sum_{i=1}^n
+    \int_{\Zcal} w_{i,z}(\theta)\, A_z^\top(Y_i - A_z\theta)\,\mathrm{d}\mu(z).
+\]
+Dans le Cas~1, $A_z^\top = \Phi(z)^\top$ était simplement la transposée d'une
+matrice d'évaluation, calculée sans surcoût. Dans le Cas~2, l'adjoint $A_z^\top$
+de l'opérateur de projection est la \emph{rétroprojection} :
+\[
+  A_z^\top : \R^p \to E,
+  \qquad
+  (A_z^\top v)(\mathbf{x}) = \sum_{j=1}^p v_j\,\delta(x_j - [R_z \mathbf{x}]_1),
+\]
+l'opérateur qui étale chaque valeur $v_j$ le long de la droite verticale
+correspondante après rotation par $R_z$. Il s'agit d'un opérateur intégral
+(transformée de Radon adjointe, ou \emph{backprojection} non filtrée), coûteux
+à évaluer numériquement : son application en dimension finie requiert une sommation
+sur l'ensemble de la grille 2D, à comparer au simple produit matriciel $\Phi(z)^\top v$
+du Cas~1.
+
+\paragraph{Adaptation du M-step EM.}
+La structure du M-step reste identique~\eqref{eq:mstep} :
+\[
+  M^{(k)}\theta^{(k+1)} = b^{(k)},
+  \qquad
+  M^{(k)} = \sum_{i=1}^n \int_{\Zcal}
+  w_{i,z}(\theta^{(k)})\, A_z^\top A_z \,\mathrm{d}\mu(z).
+\]
+Dans le Cas~1, la matrice $\Phi(z)^\top\Phi(z)$ est proportionnelle à l'identité
+quelle que soit la translation $z$ : les colonnes de $\Phi(z)$ sont les
+exponentielles de Fourier évaluées sur une grille uniforme de $p$ points, et
+l'orthogonalité discrète donne $\Phi(z)^\top\Phi(z) = p\,\Id_d$.
+La matrice $M^{(k)}$ est donc un multiple de l'identité, naturellement bien
+conditionnée, et le M-step se réduit à un simple quotient.
+
+Dans le Cas~2, en revanche, $A_z^\top A_z = R_z^\top P^\top P\, R_z$, et
+l'opérateur $P^\top P$ est la convolution par un noyau dont la transformée
+de Fourier 1D décroît comme $|\xi|^{-1}$ : il atténue fortement les hautes
+fréquences de $\theta$ et son inversion amplifie le bruit à toutes les
+fréquences au-delà du contenu utile du signal.
+La matrice $M^{(k)}$ hérite de ce mauvais conditionnement — ses plus petites
+valeurs propres tendent vers zéro avec la résolution du maillage — et
+l'inversion directe est instable.
+C'est précisément pourquoi la régularisation de la
+Section~\ref{sec:regularisation} est \emph{indispensable} dans le Cas~2,
+alors qu'elle reste optionnelle dans le Cas~1 : l'ajout de $\lambda\sigma^2 I$
+(cf.~\eqref{eq:mstep_reg}) restaure le conditionnement de la matrice à inverser.
+
+\paragraph{Identifiabilité et métrique d'erreur adaptée.}
+La non-identifiabilité du modèle~\eqref{eq:modele} ne disparaît pas dans le
+Cas~2 : le groupe d'invariance est maintenant $\mathrm{SO}(2)$ agissant par
+rotation sur $L^2(B(0,1))$.
+
+\begin{proposition}
+\label{prop:invariance_so2}
+Pour tout $\theta \in E$ et tout $a \in [0, 2\pi[$,
+$\ell_n(R_a\theta) = \ell_n(\theta)$, où $(R_a\theta)(\mathbf{x}) = \theta(R_{-a}\mathbf{x})$.
+\end{proposition}
+
+\begin{proof}
+Le calcul est analogue à la Proposition~\ref{prop:invariance_translation}.
+On vérifie que $A_z(R_a\theta) = A_{z+a}\theta$ :
+\begin{align*}
+  \bigl(A_z(R_a\theta)\bigr)_j
+  &= (P(R_z(R_a\theta)))(x_j)
+   = (P(R_{z+a}\theta))(x_j)
+   = (A_{z+a}\theta)_j,
+\end{align*}
+en utilisant $R_z \circ R_a = R_{z+a}$. La log-vraisemblance ne dépend alors de
+$\theta$ qu'à travers les termes $A_z\theta$, et le changement de variable
+$z' = z + a \pmod{2\pi}$ laisse l'intégrale sur $[0, 2\pi[$ invariante par
+invariance de la mesure de Lebesgue sur le groupe.
+\end{proof}
+
+Conséquence : si $\hat\theta$ est un maximum de $\ell_n$, alors $R_a\hat\theta$
+en est un autre pour tout $a \in [0, 2\pi[$. L'estimateur n'est identifiable
+qu'à une rotation globale près. Par analogie avec ce qui a été fait dans
+la Section~\ref{subsec:identifiabilite} pour le Cas~1, la métrique d'erreur
+naturelle est
+\[
+  \varepsilon = \inf_{a \in [0, 2\pi[}
+  \frac{\norm{R_a\hat\theta - \theta}}{\norm{\theta}},
+\]
+où l'infimum est approché numériquement par corrélation croisée 2D entre
+les images $\hat\theta$ et $\theta$ sur la grille, via transformée de Fourier
+rapide 2D.
+
+\paragraph{Théorème de la tranche de Fourier.}
+Le résultat théorique central du Cas~2 est le \emph{théorème de la tranche de Fourier}
+(\textit{Fourier slice theorem}), qui relie la transformée de Fourier 2D de $\theta$
+à l'ensemble de ses projections de Radon \cite{natterer2001mathematics}.
+Tout élément $\theta \in E \subset L^2(B(0,1))$, prolongé par zéro hors de $B(0,1)$,
+est bien dans $L^1(\R^2) \cap L^2(\R^2)$ car il est de carré intégrable à support compact.
+
+\begin{theorem}[Tranche de Fourier]
+\label{thm:tranche_fourier}
+Soit $\theta \in L^1(\R^2) \cap L^2(\R^2)$ et $z \in [0, \pi[$. On note
+\[
+  \hat\theta(\xi_1,\xi_2)
+  = \int_{\R^2} \theta(\mathbf{x})\,e^{-i(\xi_1 x_1 + \xi_2 x_2)}\,\mathrm{d}\mathbf{x}
+\]
+la transformée de Fourier bidimensionnelle de $\theta$. Alors la transformée
+de Fourier 1D de la projection $P(R_z\theta)$ vérifie :
+\[
+  \widehat{P(R_z\theta)}(\xi)
+  \;=\; \hat\theta(\xi\cos z,\,-\xi\sin z),
+  \qquad \xi \in \R.
+\]
+\end{theorem}
+
+\begin{proof}[Esquisse de preuve]
+Par le théorème de Fubini, on échange les intégrations :
+\[
+  \widehat{P(R_z\theta)}(\xi)
+  = \int_{\R^2} (R_z\theta)(x,y)\,e^{-i\xi x}\,\mathrm{d}x\,\mathrm{d}y.
+\]
+Le changement de variables $(u,v)^\top = R_{-z}(x,y)^\top$ (rotation directe de jacobien 1)
+donne $(R_z\theta)(x,y) = \theta(u,v)$ et $x = \cos z \cdot u - \sin z \cdot v$, d'où :
+\[
+  \widehat{P(R_z\theta)}(\xi)
+  = \int_{\R^2} \theta(u,v)\,
+    e^{-i(\xi\cos z \cdot u\;-\;\xi\sin z \cdot v)}\,\mathrm{d}u\,\mathrm{d}v
+  = \hat\theta(\xi\cos z,\,-\xi\sin z). \qedhere
+\]
+\end{proof}
+
+\begin{remark}
+Lorsque $\xi$ parcourt $\R$, le point $(\xi\cos z, -\xi\sin z)$ décrit la droite
+de direction $(\cos z, -\sin z)$ passant par l'origine dans le plan fréquentiel.
+En faisant varier $z \in [0, \pi[$, on obtient toutes les droites passant par
+l'origine de $\R^2$ : la collection $(P(R_z\theta))_{z \in [0,\pi[}$ détermine donc
+$\hat\theta$ sur $\R^2 \setminus \{0\}$, et $\theta$ s'en déduit par transformée
+de Fourier inverse. Ceci justifie l'identifiabilité du problème \emph{lorsque les
+$Z_i$ sont connus} : $K$ projections à angles distincts fournissent $\hat\theta$
+sur $K$ droites fréquentielles, ce qui suffit à reconstruire $\theta$ dès que ces
+droites couvrent les fréquences utiles du signal.
+\end{remark}
+
+Ce théorème éclaire aussi directement le mauvais conditionnement de $M^{(k)}$ :
+la transformée de Fourier du noyau de $P^\top P$ décroît en $|\xi|^{-1}$
+(convolution de Riesz), si bien que l'inversion de $A_z^\top A_z = R_z^\top P^\top P\, R_z$
+amplifie le bruit aux hautes fréquences. C'est cette décroissance qui rend la
+régularisation de la Section~\ref{sec:regularisation} \emph{indispensable} dans le
+Cas~2 et seulement optionnelle dans le Cas~1.
+
+\paragraph{Bilan comparatif Cas~1 / Cas~2.}
+Le tableau~\ref{tab:comparaison_cas} résume les différences structurelles entre les
+deux cas.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lp{4.8cm}p{5.2cm}}
+\toprule
+& \textbf{Cas~1} (translations 1D) & \textbf{Cas~2} (rotations + projection 2D) \\
+\midrule
+Structure de $A_z^\top A_z$
+  & $p\,\Id_d$ \newline (indépendant de $z$, optimal)
+  & $R_z^\top P^\top P\,R_z$ \newline (spectre $\sim |\xi|^{-1}$, mal conditionné) \\
+Cond.\ de $M^{(k)}$
+  & $1$ (M-step trivial)
+  & $\to\infty$ avec la résolution \\
+Régularisation
+  & optionnelle
+  & indispensable \\
+Coût d'un M-step
+  & $O(n_z d^2 + d^3)$
+  & $O(n_z\,p_{\mathrm{2D}}\,d + d^3)$, coûteux \\
+Groupe d'invariance de $\ell_n$
+  & $\R/2\pi\mathbb{Z}$ (translations)
+  & $O(2)$ (rotations + chiralité) \\
+Métrique d'erreur
+  & $\inf_{a}\,\|\tau_a\hat\theta - \theta\|\,/\,\|\theta\|$
+  & $\inf_{a}\,\|R_a\hat\theta - \theta\|\,/\,\|\theta\|$ \\
+\bottomrule
+\end{tabular}
+\caption{Comparaison structurelle des deux cas du modèle~\eqref{eq:modele}.}
+\label{tab:comparaison_cas}
+\end{table}
+
+\paragraph{Ambiguïté chirale.}
+En Cas~2, une subtilité absente du Cas~1 mérite d'être signalée.
+Notons $\theta^*(\mathbf{x}) = \theta(S\mathbf{x})$ l'image miroir de $\theta$,
+où $S = \mathrm{diag}(1,-1)$ est la réflexion par rapport à l'axe des abscisses.
+Un calcul direct utilisant $S R_{-z} = R_z S$ montre que
+$(P(R_z\theta^*))(x) = (P(R_{-z}\theta))(x)$ pour tout $x \in [-1,1]$ :
+les projections de $\theta^*$ coïncident avec celles de $\theta$ vu sous l'angle
+opposé. Comme les $Z_i$ sont uniformes sur $[0,2\pi[$, la loi de $-Z_i$ est
+identique à celle de $Z_i$, si bien que $\theta$ et $\theta^*$ produisent des
+observations de même loi : $\ell_n(\theta^*) = \ell_n(\theta)$ presque sûrement.
+Le groupe d'ambiguïté est donc $O(2)$ (et non $\mathrm{SO}(2)$), contenant en
+plus une réflexion. Ce \emph{problème de chiralité}~\cite{frank2006three} est
+inhérent à la cryo-EM : deux structures biologiques images miroir l'une de l'autre
+sont indiscernables à partir de leurs seules projections, sans information a priori
+sur la symétrie moléculaire.
+
+\paragraph{Perspectives.}
+Les difficultés spécifiques du Cas~2 — mauvais conditionnement de $M^{(k)}$,
+groupe d'ambiguïté $O(2)$, coût numérique élevé — se retrouvent amplifiées
+dans l'analogue tridimensionnel qui constitue le vrai problème de cryo-EM :
+chaque observation est alors une image 2D d'une densité volumique $\theta \in L^2(B(0,1) \subset \R^3)$,
+et les angles de vue $Z_i$ appartiennent au groupe $\mathrm{SO}(3)$
+\cite{frank2006three, singer2011three}.
+Une direction d'extension importante consiste à supposer la loi de $Z$ inconnue :
+l'inférence simultanée de $\theta$ et de la distribution des angles constitue alors
+un problème de mélange non paramétrique dont l'identifiabilité et la vitesse
+de convergence minimax sont des questions ouvertes~\cite{singer2011three}.
+Enfin, les simulations de la Section~\ref{sec:analyse_erreur} suggèrent un régime
+$\varepsilon_n(\sigma) \sim C(\sigma)/\sqrt{n}$ pour le Cas~1 ;
+l'établissement d'une borne minimax analogue pour le Cas~2, via les outils
+de l'estimation dans les problèmes inverses \cite{cavalier2008inverse},
+constituerait la principale contribution théorique restante de ce projet.
+
+
+\subsection{Étude numérique : reconstruction 2D oracle}
+\label{subsec:numerique_cas2}
+
+On illustre numériquement les difficultés spécifiques du Cas~2 dans un cadre
+\emph{oracle} où les angles $Z_i$ sont supposés connus. Ce cadre simplifié
+— la reconstruction se réduit à un unique système linéaire, sans étape E —
+suffit à mettre en évidence la nécessité de la régularisation.
+
+\paragraph{Paramètres.}
+Le fantôme est une image $32 \times 32$ ($d = 1024$) représentant un disque
+avec deux inclusions d'intensités différentes (Fig.~\ref{fig:reconstruction_2d},
+panneau gauche), analogue d'une coupe moléculaire.
+Les $K = 40$ angles sont uniformément répartis sur $[0°, 180°[$, chacun
+fournissant $p = 32$ mesures, soit $n_{\mathrm{obs}} = 1280$ observations
+(rapport $n_{\mathrm{obs}}/d \approx 1{,}2$). Le bruit est intentionnellement
+faible ($\sigma = 0{,}05$) afin d'isoler l'effet du mauvais conditionnement.
+
+\paragraph{Spectre de $A^\top A$ et mauvais conditionnement.}
+La Figure~\ref{fig:spectre_ATA} compare le spectre de $A^\top A$ en Cas~2
+au spectre constant du Cas~1.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.78\textwidth]{spectre_ATA}
+  \caption{Valeurs propres triées de $A^\top A$ en Cas~2 (Radon, courbe bleue)
+    et en Cas~1 (tirets rouges, $\mu_j = p = 32$ constant).
+    L'axe vertical est logarithmique.}
+  \label{fig:spectre_ATA}
+\end{figure}
+
+En Cas~1, $A_z^\top A_z = p\,\Id_d$ quelle que soit la translation $z$,
+donc $A^\top A$ est un multiple de l'identité (conditionnement 1).
+En Cas~2, les valeurs propres décroissent de $\mu_1 \approx 1138$ à
+$\mu_d \approx 7{,}6 \times 10^{-4}$, soit un conditionnement
+$\mathrm{cond}(A^\top A) \approx 1{,}5 \times 10^6$.
+Cette décroissance est la signature discrète du spectre en $|\xi|^{-1}$
+de $P^\top P$ (Section~\ref{subsec:cas2_extensions}) : les fréquences spatiales
+élevées de $\theta$ sont très faiblement mesurées par les projections, et leur
+reconstruction amplifie le bruit d'un facteur $\mu_1/\mu_d \approx 10^6$.
+
+\paragraph{Comparaison des reconstructions.}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{reconstruction_2d}
+  \caption{Reconstruction oracle en Cas~2 ($K=40$ angles, $\sigma=0{,}05$).
+    De gauche à droite : image vraie $\theta$, reconstruction sans régularisation
+    (erreur $33\%$), reconstruction Tikhonov $\lambda = 150$ (erreur $7\%$).}
+  \label{fig:reconstruction_2d}
+\end{figure}
+
+La Figure~\ref{fig:reconstruction_2d} illustre la dégradation causée par le
+mauvais conditionnement. Sans régularisation, la reconstruction présente de forts
+artefacts haute fréquence et une erreur relative de $33\%$ malgré $\sigma = 0{,}05$:
+l'inversion directe amplifie les composantes du résidu $Y - A\hat\theta$ dans les
+directions propres de faibles valeurs propres. Avec la régularisation de
+Tikhonov~\eqref{eq:mstep_reg} et $\lambda = 150$, les structures principales
+du fantôme sont retrouvées avec une erreur réduite à $7\%$.
+
+\paragraph{Courbe en U et sélection de $\lambda$.}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.70\textwidth]{erreur_reg_cas2}
+  \caption{Erreur de reconstruction $\|\hat\theta(\lambda) - \theta\|/\|\theta\|$
+    en fonction de $\lambda$ (Cas~2, oracle). La courbe en U contraste avec la
+    courbe plate du Cas~1 (Figure~\ref{fig:erreur_vs_lambda}).}
+  \label{fig:erreur_reg_cas2}
+\end{figure}
+
+La Figure~\ref{fig:erreur_reg_cas2} montre la courbe en U caractéristique des
+problèmes inverses régularisés. Pour $\lambda \ll \lambda^*$, l'inversion est
+instable : la haute variance domine. Pour $\lambda \gg \lambda^*$, la régularisation
+impose un biais excessif et l'estimateur converge vers zéro. Le minimum est atteint
+en $\lambda^* \approx 137$ avec une erreur de $7\%$, à comparer à $33\%$ sans
+régularisation — réduction d'un facteur $4{,}8$.
+
+Ce résultat contraste directement avec celui de la Section~\ref{subsec:resultats_reg}
+(Cas~1, Figure~\ref{fig:erreur_vs_lambda}) où la courbe était plate sur plusieurs
+décades de $\lambda$. La différence est entièrement expliquée par l'interprétation
+spectrale (Section~\ref{subsec:interp_spectrale}) : en Cas~1, toutes les valeurs
+propres de $M^{(k)}$ sont égales à $p$, donc aucune direction n'est amplifiée par
+l'inversion et la régularisation n'apporte rien. En Cas~2, les directions propres
+telles que $\mu_j \ll \lambda^* \sigma^2$ sont celles pour lesquelles la
+régularisation est décisive, et ce sont précisément celles que le spectre
+en $|\xi|^{-1}$ rend instables.
 
 
 % ════════════════════════════════════════════════════════════════════════════
