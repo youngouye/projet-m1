@@ -1,0 +1,15 @@
+% presentation/slides/05_vraisemblance.tex
+\begin{frame}{Le Défi de la Log-Vraisemblance Marginale}
+    Puisque les variables $Z_i$ sont manquantes, on doit intégrer (marginaliser) la densité conjointe :
+    
+    $$l_n(\theta) = \sum_{i=1}^n \log \left( \int_{\mathcal{Z}} f_Y(Y_i | Z=z, \theta) f_Z(z) d\mu(z) \right)$$
+    
+    \vspace{0.2cm}
+    \textbf{Une structure non linéaire complexe (Log-Sum-Exp) :}
+    \begin{itemize}
+        \item $l_n(\theta)$ \alert{\textbf{n'est plus concave}}, invalidant une optimisation exacte globale directe.
+        \item Présence de multiples \textbf{maximums locaux} (pièges pour les algorithmes).
+        \item \textbf{Défaut d'identifiabilité :} Le problème est invariant à une translation globale près. On doit introduire une \textbf{distance quotient d'orbite} :
+        $$d_{\text{orbite}}(\theta, \theta^*) = \min_{z \in \mathcal{Z}} \| \theta - A_z \theta^* \|$$
+    \end{itemize}
+\end{frame}

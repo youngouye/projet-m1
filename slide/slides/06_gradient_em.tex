@@ -1,0 +1,32 @@
+% presentation/slides/06_gradient_em.tex
+\begin{frame}{Descente de Gradient Directe vs Approche EM}
+    Pour maximiser $l_n(\theta)$, deux choix algorithmiques s'opposent :
+    
+    \vspace{0.4cm}
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \setbeamercolor{block title}{bg=DarkBeige,fg=Cream}
+            \begin{block}{\textbf{Descente de Gradient Directe}}
+                \small
+                \begin{itemize}
+                    \item Calcul direct du gradient de la log-vraisemblance marginale.
+                    \item Fait intervenir les poids a posteriori $w_{i,z}(\theta)$.
+                    \item Sensible au choix du pas (Règle d'Armijo nécessaire).
+                    \item \alert{Nécessite des stratégies multi-départs} pour échapper aux extrema locaux.
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \setbeamercolor{block title}{bg=SoftGold,fg=Cream}
+            \begin{block}{\textbf{Algorithme EM}}
+                \small
+                \begin{itemize}
+                    \item Maximise une borne inférieure via les \textbf{données complètes} $(Y, Z)$.
+                    \item Propriété de \textbf{croissance monotone} de la vraisemblance à chaque étape.
+                    \item Découple la complexité : l'étape d'inversion redevient quadratique et linéaire.
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}

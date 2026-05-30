@@ -1,0 +1,20 @@
+% presentation/slides/04_cas1.tex
+\begin{frame}{Le Cas d'Application Linéaire 1D}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \textbf{Modèle Jouet : Décalages circulaires (Translations sur le Tore)}
+            \begin{itemize}
+                \item $\theta$ est un signal périodique modélisé dans la base de Fourier.
+                \item Les variables cachées $Z_i$ représentent des translations uniformes sur la grille discretisée.
+                \item L'opérateur $A_{Z_i}$ applique un déphasage en fréquences.
+            \end{itemize}
+            \vspace{0.2cm}
+            \alert{\textbf{Piège Statistique :}} La moyenne empirique brute $\frac{1}{n}\sum Y_i$ converge vers un signal plat. L'information de phase s'efface !
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            % Remplacer par \includegraphics[width=0.9\textwidth]{figures/signaux_1D.pdf}
+            \framebox{\begin{minipage}{0.9\textwidth}\centering\vspace{1.2cm}\textcolor{DarkBeige}{\textbf{[ figures/signaux_1D.pdf ]}}\\\small Signaux simulés translatés\vspace{1.2cm}\end{minipage}}
+        \end{column}
+    \end{columns}
+\end{frame}

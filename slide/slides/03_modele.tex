@@ -1,0 +1,17 @@
+% presentation/slides/03_modele.tex
+\begin{frame}{Le Modèle Mathématique Général}
+    Pour chaque observation $i \in \{1, \dots, n\}$, on formule l'équation :
+    
+    \begin{center}
+        \Large \alert{$Y_i = A_{Z_i}\theta + \sigma E_i$}
+    \end{center}
+    
+    \vspace{0.4cm}
+    \begin{itemize}
+        \item $\mathbf{\theta \in E}$ : Le paramètre ou signal d'intérêt \textbf{inconnu} à estimer ($\dim E = d$).
+        \item $\mathbf{Z_i \in \mathcal{Z}}$ : La \textbf{variable cachée} (la transformation géométrique subie par l'objet), supposée i.i.d. selon une loi connue $f_Z$.
+        \item $\mathbf{A_{Z_i}}$ : L'opérateur linéaire modélisant la transformation (translation, rotation, projection).
+        \item $\mathbf{E_i \sim \mathcal{N}(0, \text{Id}_p)}$ : Un bruit blanc gaussien i.i.d., indépendant de $Z_i$.
+        \item $\mathbf{\sigma > 0}$ : Le niveau de bruit de l'appareil de mesure.
+    \end{itemize}
+\end{frame}

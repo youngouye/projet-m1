@@ -1,0 +1,19 @@
+% presentation/slides/09_tikhonov.tex
+\begin{frame}{Stratégies de Stabilisation : Tikhonov et Pénalités}
+    Pour stabiliser le système, on modifie la fonction objectif en ajoutant une pénalité :
+    
+    \begin{center}
+        \large $l_n^{\text{reg}}(\theta) = l_n(\theta) - \alert{\lambda \mathcal{R}(\theta)}$
+    \end{center}
+    
+    \vspace{0.2cm}
+    \begin{itemize}
+        \item \textbf{Régularisation de Tikhonov ($L^2$) :} $\mathcal{R}(\theta) = \frac{1}{2}\|\theta\|^2_2$.
+        \begin{itemize}
+            \item Décale artificiellement les valeurs propres de la matrice : $\lambda_j \leftarrow \lambda_j + \lambda\sigma^2$.
+            \item Empêche l'inversion de diviser par zéro, supprimant les oscillations hautes fréquences.
+        \end{itemize}
+        \item \textbf{Régularisation Lasso ($L^1$) :} $\mathcal{R}(\theta) = \|\theta\|_1 \implies$ Favorise des solutions \textbf{parcimonieuses} (creuses).
+        \item \textbf{Variation Totale (TV) :} $\mathcal{R}(\theta) = \|\nabla \theta\|_1 \implies$ Préserve les contours et les zones homogènes (adapté au cas 2D).
+    \end{itemize}
+\end{frame}

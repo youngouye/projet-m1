@@ -1,0 +1,20 @@
+% presentation/slides/08_regularisation.tex
+\begin{frame}{Le Problème Inverse Mal Posé en Dimension Supérieure}
+    \begin{columns}[c]
+        \begin{column}{0.55\textwidth}
+            \large\textbf{La Rupture Géométrique (Cas 2D / Radon)}\\[0.2cm]
+            \normalsize
+            \begin{itemize}
+                \item En projection 2D, l'opérateur $A_z$ lisse intensément le signal.
+                \item Le spectre de l'opérateur décroît en \alert{$|\xi|^{-1}$} (Théorème de la tranche de Fourier).
+                \item La matrice de l'étape M devient \textbf{très mal conditionnée} (valeurs propres proches de 0).
+                \item \textbf{Conséquence :} Le bruit de mesure $\sigma E_i$ est multiplié par $1/\lambda_k$ et explose en haute fréquence.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \centering
+            % Remplacer par \includegraphics[width=0.9\textwidth]{figures/"spectre_ATA.pdf"}
+            \framebox{\begin{minipage}{0.9\textwidth}\centering\vspace{1.2cm}\textcolor{DarkBeige}{\textbf{[ figures/spectre_ATA.pdf ]}}\\\small Évanouissement des valeurs propres\vspace{1.2cm}\end{minipage}}
+        \end{column}
+    \end{columns}
+\end{frame}

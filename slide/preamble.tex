@@ -1,0 +1,83 @@
+% presentation/preamble.tex
+\documentclass[aspectratio=169,11pt]{beamer}
+
+\usetheme{metropolis}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs} 
+\usepackage{tikz} 
+
+% ==============================================================================
+% PALETTE DE COULEURS PREMIUM (Style Infographie Minimaliste)
+% ==============================================================================
+\definecolor{PremiumDark}{RGB}{45,40,35}     % Un brun-noir très profond pour le texte et titres (lisibilité 100%)
+\definecolor{SubtleTaupe}{RGB}{115,100,85}   % Un taupe élégant pour la structure secondaire
+\definecolor{Cream}{RGB}{253,251,247}        % Fond crème doux, haut de gamme, qui repose les yeux
+\definecolor{LuxuryGold}{RGB}{180,145,90}    % Or brossé pour les alertes, barres et puces
+\definecolor{LightCard}{RGB}{245,240,230}    % Couleur de fond pour les blocs/boîtes de texte
+
+% ==============================================================================
+% CONFIGURATION DES COULEURS DE BASE
+% ==============================================================================
+\setbeamercolor{background canvas}{bg=Cream}
+\setbeamercolor{normal text}{fg=PremiumDark}
+\setbeamercolor{title}{fg=PremiumDark}
+\setbeamercolor{subtitle}{fg=SubtleTaupe}
+\setbeamercolor{frametitle}{fg=PremiumDark}
+\setbeamercolor{structure}{fg=PremiumDark}
+\setbeamercolor{alerted text}{fg=LuxuryGold}
+
+% ==============================================================================
+% DESIGN DU PIED DE PAGE (Nettoyé et Ultra-Clair)
+% ==============================================================================
+\metroset{progressbar=foot} 
+\setbeamercolor{progress bar}{fg=LuxuryGold, bg=LightCard} % Barre fine Or sur fond discret
+
+% Le texte du bas écrit en gris-brun fin directement sur le fond Crème
+\setbeamercolor{footline}{fg=SubtleTaupe, bg=Cream} 
+\setbeamercolor{page number in head/foot}{fg=SubtleTaupe}
+
+% ==============================================================================
+% CORRECTION CRITIQUE : Suppression des pages sombres de Metropolis
+% ==============================================================================
+% On force Metropolis à faire des pages de garde et de sections CLAIRES. 
+% Plus aucun risque de texte noir caché sur fond marron !
+\setbeamercolor{palette primary}{fg=PremiumDark, bg=Cream}
+
+% ==============================================================================
+% INFOGRAPHIE : Structure visuelle des Diapositives
+% ==============================================================================
+\setbeamertemplate{navigation symbols}{}
+
+% Ligne de séparation or brossé sous le titre de chaque slide
+\setbeamertemplate{frametitle}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=4ex,dp=1.5ex,leftskip=0.5cm]{frametitle}
+        \usebeamerfont{frametitle}\insertframetitle
+    \end{beamercolorbox}%
+    \vspace{-0.1cm}
+    {\color{LuxuryGold}\hrule height 0.8pt} 
+    \vspace{0.2cm}
+}
+
+% Blocs Modernes style "Cards / Encadrés épurés"
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamercolor{block title}{bg=SubtleTaupe, fg=Cream}
+\setbeamercolor{block body}{bg=LightCard, fg=PremiumDark}
+
+\setbeamercolor{block title alerted}{bg=LuxuryGold, fg=Cream}
+\setbeamercolor{block body alerted}{bg=LuxuryGold!10, fg=PremiumDark}
+
+% Puces d'infographie épurées
+\setbeamertemplate{itemize item}{\color{LuxuryGold}$\blacktriangleright$}
+\setbeamertemplate{itemize subitem}{\color{SubtleTaupe}$\bullet$}
+
+% Typographie Mathématique Professionnelle
+\usefonttheme{professionalfonts}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\DeclareMathOperator*{\argmax}{arg\,max}

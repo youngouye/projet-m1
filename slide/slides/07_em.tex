@@ -1,0 +1,11 @@
+% presentation/slides/07_em.tex
+\begin{frame}{Les Deux Étapes Clés de l'Algorithme EM}
+    À l'itération $k$, on calcule l'estimation récursive $\theta^{(k+1)}$ :
+
+    \textbf{Étape E (Espérance) :} Calcul des probabilités a posteriori (\textit{poids}) pour chaque échantillon $i$ et transformation $z$ :
+    $$w_{i,z}(\theta^{(k)}) = \frac{f_Z(z) \exp\left(-\frac{\|Y_i - A_z\theta^{(k)}\|^2}{2\sigma^2}\right)}{\int_{\mathcal{Z}} f_Z(z') \exp\left(-\frac{\|Y_i - A_{z'}\theta^{(k)}\|^2}{2\sigma^2}\right) d\mu(z')}$$
+
+    \textbf{Étape M (Maximisation) :} Résolution d'un point fixe sous forme de système linéaire :
+    $$\left( \sum_{i=1}^n \int_{\mathcal{Z}} w_{i,z}(\theta^{(k)}) A_z^\top A_z d\mu(z) \right) \alert{\theta^{(k+1)}} = \sum_{i=1}^n \int_{\mathcal{Z}} w_{i,z}(\theta^{(k)}) A_z^\top Y_i d\mu(z)$$
+    L'étape M est un problème \textbf{quadratique convexe}, trivial à résoudre numériquement.
+\end{frame}

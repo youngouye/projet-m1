@@ -1,0 +1,12 @@
+% presentation/slides/11_conclusion.tex
+\begin{frame}{Conclusion et Perspectives}
+    \textbf{Trois enseignements fondamentaux :}
+    \begin{enumerate}
+        \item \textbf{Le coût statistique du masque :} L'absence géométrique d'information ($Z_i$ cachés) détruit la linéarité classique et introduit de la non-convexité via le profil \textit{log-sum-exp}.
+        \item \textbf{La puissance découplée de l'EM :} L'algorithme EM s'avère optimal en pratique en reformulant l'étape M complexe en itérations de sous-problèmes convexes et linéaires stables.
+        \item \textbf{Complémentarité Statistique-Régularisation :}} La quantité de données ($n \to \infty$) réduit l'erreur de variance, mais seule la pénalisation mathématique structurelle gère le caractère mal posé de la physique (Radon 2D).
+    \end{enumerate}
+    
+    \vspace{0.2cm}
+    \textbf{Ouverture :} Généralisation en 3D (espace des rotations non commutatif $SO(3)$) et traitement des hétérogénéités de distribution de $f_Z$.
+\end{frame}
